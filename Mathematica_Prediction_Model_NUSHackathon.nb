@@ -1,0 +1,1982 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     96278,       1974]
+NotebookOptionsPosition[     94456,       1940]
+NotebookOutlinePosition[     94799,       1955]
+CellTagsIndexPosition[     94756,       1952]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"datafile", "=", 
+   RowBox[{"FileNameJoin", "[", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"NotebookDirectory", "[", "]"}], ",", 
+      "\"\<obs_data_w.xlsx\>\""}], "}"}], "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.7515030174702234`*^9, 3.751503066372073*^9}, {
+   3.751503099185951*^9, 3.7515031011552734`*^9}, 3.7515038908816166`*^9},
+ CellLabel->
+  "In[175]:=",ExpressionUUID->"8f652fc9-cf81-4387-b822-47531c3d1e44"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"trainingdatasetnb", " ", "=", " ", 
+   RowBox[{
+    RowBox[{"Import", "[", "datafile", "]"}], "[", 
+    RowBox[{"[", "1", "]"}], "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.7515031676205235`*^9, 3.751503194410819*^9}},
+ CellLabel->
+  "In[176]:=",ExpressionUUID->"09cceb15-805b-4e6c-af98-7eb4ce7687b2"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"trainingdatasetnb", " ", "=", 
+   RowBox[{"Drop", "[", " ", 
+    RowBox[{"trainingdatasetnb", ",", "1"}], "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{3.7515031609549365`*^9, 3.7515038426748857`*^9},
+ CellLabel->
+  "In[177]:=",ExpressionUUID->"0d05d78c-5920-4a37-ad4c-f8716719373e"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"trainingdatalengthnb", " ", "=", " ", 
+   RowBox[{"Length", "[", "trainingdatasetnb", "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{3.7515032115359135`*^9, 3.7515038730521283`*^9},
+ CellLabel->
+  "In[178]:=",ExpressionUUID->"227fe399-be0b-48db-b916-66554375735b"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Voltage", " ", "=", " ", 
+   RowBox[{"{", "}"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"CurrentDensity", "=", " ", 
+   RowBox[{"{", "}"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"Temparature", " ", "=", " ", 
+   RowBox[{"{", "}"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"Uncertanity", "=", " ", 
+   RowBox[{"{", "}"}]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.7515032309201*^9, 3.751503253188041*^9}},
+ CellLabel->
+  "In[179]:=",ExpressionUUID->"bf7d680f-9506-4661-b6d2-bdb7deb62452"],
+
+Cell[BoxData[
+ RowBox[{"\n", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"c1", " ", "=", " ", "0"}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"While", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{"c1", " ", "+=", " ", "1"}], ")"}], " ", "<", 
+       "trainingdatalengthnb"}], " ", ",", "\n", "  ", 
+      RowBox[{
+       RowBox[{"{", "\n", "    ", "\n", "    ", 
+        RowBox[{
+         RowBox[{"Voltage", " ", "=", " ", 
+          RowBox[{"Append", "[", 
+           RowBox[{"Voltage", ",", " ", 
+            RowBox[{
+             RowBox[{"trainingdatasetnb", "[", 
+              RowBox[{"[", "c1", "]"}], "]"}], "[", 
+             RowBox[{"[", "2", "]"}], "]"}]}], "]"}]}], ";", "\n", "    ", 
+         RowBox[{"Temparature", " ", "=", " ", 
+          RowBox[{"Append", "[", 
+           RowBox[{"Temparature", ",", " ", 
+            RowBox[{
+             RowBox[{"trainingdatasetnb", "[", 
+              RowBox[{"[", "c1", "]"}], "]"}], "[", 
+             RowBox[{"[", "3", "]"}], "]"}]}], "]"}]}], ";", "\n", "    ", 
+         RowBox[{"Uncertanity", " ", "=", " ", 
+          RowBox[{"Append", "[", 
+           RowBox[{"Uncertanity", ",", " ", 
+            RowBox[{
+             RowBox[{"trainingdatasetnb", "[", 
+              RowBox[{"[", "c1", "]"}], "]"}], "[", 
+             RowBox[{"[", "4", "]"}], "]"}]}], "]"}]}], ";", "\n", "    ", 
+         RowBox[{"CurrentDensity", " ", "=", " ", 
+          RowBox[{"Append", "[", 
+           RowBox[{"CurrentDensity", ",", " ", 
+            RowBox[{
+             RowBox[{"trainingdatasetnb", "[", 
+              RowBox[{"[", "c1", "]"}], "]"}], "[", 
+             RowBox[{"[", "5", "]"}], "]"}]}], "]"}]}], ";"}], "\n", "    ", 
+        "}"}], ";"}]}], "\n", "  ", "]"}], ";"}]}]}]], "Input",
+ CellChangeTimes->{
+  3.7515031094366264`*^9, 3.751503154259388*^9, {3.751503258890365*^9, 
+   3.751503306992206*^9}, 3.75150334506783*^9, {3.7515034330572543`*^9, 
+   3.7515034394481*^9}},
+ CellLabel->
+  "In[183]:=",ExpressionUUID->"25bb2922-c72f-4e76-a9cb-8d9c9aed1edc"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"inputset", "=", " ", 
+   RowBox[{"Transpose", "[", 
+    RowBox[{"{", 
+     RowBox[{"Temparature", ",", "CurrentDensity"}], "}"}], "]"}]}], 
+  ";"}]], "Input",
+ CellChangeTimes->{{3.7515035253283834`*^9, 3.751503550946923*^9}, 
+   3.7515038394866357`*^9},
+ CellLabel->
+  "In[185]:=",ExpressionUUID->"76ced971-0fd4-465a-a6f3-6c8731a7a6bd"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"trainingset", "=", " ", 
+   RowBox[{"{", "}"}]}], ";"}], "\n", 
+ RowBox[{"For", "[", 
+  RowBox[{
+   RowBox[{"i", "=", "1"}], ",", 
+   RowBox[{"i", "<", "trainingdatalengthnb"}], ",", 
+   RowBox[{"i", "++"}], ",", 
+   RowBox[{"trainingset", " ", "=", " ", 
+    RowBox[{"Append", "[", 
+     RowBox[{"trainingset", ",", 
+      RowBox[{
+       RowBox[{"inputset", "[", 
+        RowBox[{"[", "i", "]"}], "]"}], " ", "->", " ", 
+       RowBox[{"Voltage", "[", 
+        RowBox[{"[", "i", "]"}], "]"}]}]}], "]"}]}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.7515036028326607`*^9, 3.7515036331157537`*^9}, 
+   3.7515036819307604`*^9, 3.7515038092435274`*^9},
+ CellLabel->
+  "In[186]:=",ExpressionUUID->"9e57603c-6e82-4f3e-838c-4fc1f2f22d40"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"LinearPrediction", "=", " ", 
+   RowBox[{"Predict", "[", 
+    RowBox[{"trainingset", ",", 
+     RowBox[{"Method", "->", "\"\<LinearRegression\>\""}]}], "]"}]}], 
+  ";"}], "\n", 
+ RowBox[{"infolinearreg", " ", "=", " ", 
+  RowBox[{"PredictorInformation", "[", "LinearPrediction", "]"}]}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"NeuralNetwordPrediction", " ", "=", " ", 
+    RowBox[{"Predict", "[", 
+     RowBox[{"trainingset", ",", 
+      RowBox[{"Method", "->", "\"\<NeuralNetwork\>\""}]}], "]"}]}], ";"}], 
+  "\t\t"}], "\n", 
+ RowBox[{
+  RowBox[{"infoNeuralNetwork", " ", "=", " ", 
+   RowBox[{"PredictorInformation", "[", "NeuralNetwordPrediction", "]"}]}], 
+  ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"NearestNeighborPrediction", "=", " ", 
+    RowBox[{"Predict", "[", 
+     RowBox[{"trainingset", ",", 
+      RowBox[{"Method", "->", "\"\<NearestNeighbors\>\""}]}], "]"}]}], ";"}], 
+  "\t"}], "\n", 
+ RowBox[{
+  RowBox[{"infoNN", " ", "=", " ", 
+   RowBox[{"PredictorInformation", "[", "NearestNeighborPrediction", "]"}]}], 
+  ";"}], "\n", 
+ RowBox[{
+  RowBox[{"RandomForestPrediction", "=", " ", 
+   RowBox[{"Predict", "[", 
+    RowBox[{"trainingset", ",", 
+     RowBox[{"Method", "->", "\"\<RandomForest\>\""}]}], "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"infoRF", " ", "=", " ", 
+   RowBox[{"PredictorInformation", "[", "RandomForestPrediction", "]"}]}], 
+  ";"}], "\n"}], "Input",
+ CellChangeTimes->{{3.751503977823122*^9, 3.75150406832857*^9}, {
+  3.7515053578406963`*^9, 3.75150536240767*^9}},
+ CellLabel->
+  "In[189]:=",ExpressionUUID->"c8d36840-202d-4d7a-812d-41a509e8add8"],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   FrameBox[GridBox[{
+      {
+       ItemBox[
+        FrameBox[
+         StyleBox["\<\"Predictor information\"\>", "SuggestionsBarText",
+          StripOnInput->False,
+          FontSize->12,
+          FontWeight->Bold],
+         FrameMargins->{{10, 5}, {-5, 5}},
+         FrameStyle->None,
+         StripOnInput->False],
+        Alignment->{Left, Bottom},
+        Background->RGBColor[0.93119, 0.93119, 0.93119],
+        Frame->{{False, False}, {True, False}},
+        FrameStyle->Opacity[0.1],
+        ItemSize->{Automatic, 1},
+        StripOnInput->False]},
+      {
+       ItemBox[
+        TagBox[
+         FrameBox[
+          TagBox[GridBox[{
+             {
+              
+              TemplateBox[{
+               TemplateBox[{5}, "Spacer1"],StyleBox["\"Input type\"", 
+                 GrayLevel[0.4], StripOnInput -> False]},
+               "RowDefault"], 
+              TemplateBox[{"\"NumericalVector\"",StyleBox[
+                 TemplateBox[{"\" (length: \"", "2", "\")\""}, "RowDefault"], 
+                 GrayLevel[0.5], StripOnInput -> False]},
+               "RowDefault"]},
+             {
+              TemplateBox[{TemplateBox[{5}, "Spacer1"],StyleBox["\"Method\"", 
+                 GrayLevel[0.4], StripOnInput -> False]},
+               "RowDefault"], 
+              TagBox[
+               TooltipBox["\<\"LinearRegression\"\>",
+                TemplateBox[{
+                  TagBox[
+                   
+                   DynamicModuleBox[{
+                    TypeSystem`NestedGrid`PackagePrivate`$state$$ = 
+                    Data`UnorderedAssociation[
+                    "RowCount" -> 20, "Length" -> 3, "InitialType" -> 
+                    TypeSystem`Struct[{
+                    "L1Regularization", "L2Regularization", 
+                    "OptimizationMethod"}, {
+                    TypeSystem`Atom[Integer], 
+                    TypeSystem`Atom[Real], 
+                    TypeSystem`Atom[String]}], "Shape" -> 
+                    TypeSystem`PackageScope`DocumentShape[
+                    Association[{"L1Regularization"} -> 
+                    TypeSystem`PackageScope`AtomShape[34], {
+                    "L2Regularization"} -> 
+                    TypeSystem`PackageScope`AtomShape[60], {
+                    "OptimizationMethod"} -> 
+                    TypeSystem`PackageScope`AtomShape[134.40000000000003`]], 
+                    1], "InitialData" -> 
+                    TypeSystem`PackageScope`CacheHandle[272936696], "Type" -> 
+                    TypeSystem`Struct[{
+                    "L1Regularization", "L2Regularization", 
+                    "OptimizationMethod"}, {
+                    TypeSystem`Atom[Integer], 
+                    TypeSystem`Atom[Real], 
+                    TypeSystem`Atom[String]}], "HandleQ" -> True, "RowTarget" -> 
+                    20, "Data" -> 
+                    TypeSystem`PackageScope`CacheHandle[272936696]], 
+                    TypeSystem`NestedGrid`PackagePrivate`$path$$ = {}, 
+                    TypeSystem`NestedGrid`PackagePrivate`$pos$$ = 1, 
+                    TypeSystem`NestedGrid`PackagePrivate`$grid$$ = 
+                    DynamicModule[{
+                    TypeSystem`NestedGrid`PackagePrivate`renderedGrid = Deploy[
+                    Style[
+                    Grid[{{
+                    Item[
+                    Annotation[
+                    EventHandler[
+                    MouseAppearance[
+                    Mouseover[
+                    Pane[
+                    RawBoxes[
+                    StyleBox[
+                    "\"L1Regularization\"", FontColor -> GrayLevel[0.4]]], {{
+                    20, Full}, 15}], 
+                    Style[
+                    Pane[
+                    RawBoxes[
+                    StyleBox[
+                    "\"L1Regularization\"", FontColor -> 
+                    RGBColor[0.27450980392156865`, 0.5372549019607843, 
+                    0.792156862745098]]], {{20, Full}, 15}], FontColor -> 
+                    RGBColor[0.27450980392156865`, 0.5372549019607843, 
+                    0.792156862745098]]], "LinkHand"], {"MouseClicked", 1} :> 
+                    TypeSystem`NestedGrid`PackagePrivate`updateState[
+                    TypeSystem`NestedGrid`PackagePrivate`$state$$, 
+                    TypeSystem`NestedGrid`PackagePrivate`$path$$, 
+                    TypeSystem`NestedGrid`PackagePrivate`$pos$$, 
+                    TypeSystem`NestedGrid`PackagePrivate`$grid$$, 1294960035][{
+                    Key["L1Regularization"]}]], 
+                    TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[
+                    1294960035][
+                    GeneralUtilities`Slice[
+                    Key["L1Regularization"]]], "Mouse"], Background -> 
+                    GrayLevel[0.95], Alignment -> {Left, Baseline}], 
+                    Pane[
+                    Annotation[
+                    RawBoxes["0"], 
+                    TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[
+                    1294960035][
+                    GeneralUtilities`Slice[
+                    Key["L1Regularization"]]], "Mouse"], 
+                    ImageSize -> {{34, Full}, Automatic}, 
+                    Alignment -> {Left, Baseline}]}, {
+                    Item[
+                    Annotation[
+                    EventHandler[
+                    MouseAppearance[
+                    Mouseover[
+                    Pane[
+                    RawBoxes[
+                    StyleBox[
+                    "\"L2Regularization\"", FontColor -> GrayLevel[0.4]]], {{
+                    20, Full}, 15}], 
+                    Style[
+                    Pane[
+                    RawBoxes[
+                    StyleBox[
+                    "\"L2Regularization\"", FontColor -> 
+                    RGBColor[0.27450980392156865`, 0.5372549019607843, 
+                    0.792156862745098]]], {{20, Full}, 15}], FontColor -> 
+                    RGBColor[0.27450980392156865`, 0.5372549019607843, 
+                    0.792156862745098]]], "LinkHand"], {"MouseClicked", 1} :> 
+                    TypeSystem`NestedGrid`PackagePrivate`updateState[
+                    TypeSystem`NestedGrid`PackagePrivate`$state$$, 
+                    TypeSystem`NestedGrid`PackagePrivate`$path$$, 
+                    TypeSystem`NestedGrid`PackagePrivate`$pos$$, 
+                    TypeSystem`NestedGrid`PackagePrivate`$grid$$, 1294960035][{
+                    Key["L2Regularization"]}]], 
+                    TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[
+                    1294960035][
+                    GeneralUtilities`Slice[
+                    Key["L2Regularization"]]], "Mouse"], Background -> 
+                    GrayLevel[0.95], Alignment -> {Left, Baseline}], 
+                    Pane[
+                    Annotation[
+                    RawBoxes["0.1"], 
+                    TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[
+                    1294960035][
+                    GeneralUtilities`Slice[
+                    Key["L2Regularization"]]], "Mouse"], 
+                    ImageSize -> {{60, Full}, Automatic}, 
+                    Alignment -> {Left, Baseline}]}, {
+                    Item[
+                    Annotation[
+                    EventHandler[
+                    MouseAppearance[
+                    Mouseover[
+                    Pane[
+                    RawBoxes[
+                    StyleBox[
+                    "\"OptimizationMethod\"", FontColor -> 
+                    GrayLevel[0.4]]], {{20, Full}, 15}], 
+                    Style[
+                    Pane[
+                    RawBoxes[
+                    StyleBox[
+                    "\"OptimizationMethod\"", FontColor -> 
+                    RGBColor[0.27450980392156865`, 0.5372549019607843, 
+                    0.792156862745098]]], {{20, Full}, 15}], FontColor -> 
+                    RGBColor[0.27450980392156865`, 0.5372549019607843, 
+                    0.792156862745098]]], "LinkHand"], {"MouseClicked", 1} :> 
+                    TypeSystem`NestedGrid`PackagePrivate`updateState[
+                    TypeSystem`NestedGrid`PackagePrivate`$state$$, 
+                    TypeSystem`NestedGrid`PackagePrivate`$path$$, 
+                    TypeSystem`NestedGrid`PackagePrivate`$pos$$, 
+                    TypeSystem`NestedGrid`PackagePrivate`$grid$$, 1294960035][{
+                    Key["OptimizationMethod"]}]], 
+                    TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[
+                    1294960035][
+                    GeneralUtilities`Slice[
+                    Key["OptimizationMethod"]]], "Mouse"], Background -> 
+                    GrayLevel[0.95], Alignment -> {Left, Baseline}], 
+                    Pane[
+                    Annotation["NormalEquation", 
+                    TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[
+                    1294960035][
+                    GeneralUtilities`Slice[
+                    Key["OptimizationMethod"]]], "Mouse"], 
+                    ImageSize -> {{134.40000000000003`, Full}, Automatic}, 
+                    Alignment -> {Left, Baseline}]}}, 
+                    BaseStyle -> {ContextMenu -> {
+                    MenuItem["Copy position to clipboard", 
+                    KernelExecute[
+                    TypeSystem`NestedGrid`PackagePrivate`toCurrentPosition[
+                    TypeSystem`NestedGrid`PackagePrivate`copyClip]], 
+                    MenuEvaluator -> Automatic], 
+                    MenuItem["Copy data to clipboard", 
+                    KernelExecute[
+                    TypeSystem`NestedGrid`PackagePrivate`toCurrentData[
+                    TypeSystem`NestedGrid`PackagePrivate`$state$$, 
+                    TypeSystem`NestedGrid`PackagePrivate`copyClip]], 
+                    MenuEvaluator -> Automatic], Delimiter, 
+                    MenuItem["Paste position in new cell", 
+                    KernelExecute[
+                    TypeSystem`NestedGrid`PackagePrivate`toCurrentPosition[
+                    TypeSystem`NestedGrid`PackagePrivate`cellPaste]], 
+                    MenuEvaluator -> Automatic], 
+                    MenuItem["Paste data in new cell", 
+                    KernelExecute[
+                    TypeSystem`NestedGrid`PackagePrivate`toCurrentData[
+                    TypeSystem`NestedGrid`PackagePrivate`$state$$, 
+                    TypeSystem`NestedGrid`PackagePrivate`cellPaste]], 
+                    MenuEvaluator -> Automatic]}, FontFamily -> "Verdana", 
+                    FontSize -> 12}, Alignment -> Left, RowMinHeight -> 1.5, 
+                    Dividers -> All, FrameStyle -> GrayLevel[0.85], 
+                    BaseStyle -> {FontFamily -> "Verdana", FontSize -> 12}], 
+                    LineBreakWithin -> False, ContextMenu -> {}, NumberMarks -> 
+                    False, ShowAutoStyles -> False]], 
+                    TypeSystem`NestedGrid`PackagePrivate`initialQ = True, 
+                    TypeSystem`NestedGrid`PackagePrivate`self = $Failed}, 
+                    Dynamic[
+                    TypeSystem`NestedGrid`PackagePrivate`setupViewPath[
+                    TypeSystem`NestedGrid`PackagePrivate`$path$$, If[
+                    Not[TypeSystem`NestedGrid`PackagePrivate`initialQ], 
+                    Module[{
+                    TypeSystem`NestedGrid`PackagePrivate`tmpGrid$ = $Failed, 
+                    TypeSystem`NestedGrid`PackagePrivate`tmpData$ = 
+                    TypeSystem`NestedGrid`PackagePrivate`LookupCacheValue[
+                    TypeSystem`NestedGrid`PackagePrivate`$state$$["Data"]]}, 
+                    TypeSystem`NestedGrid`PackagePrivate`tmpGrid$ = 
+                    If[TypeSystem`NestedGrid`PackagePrivate`tmpData$ === 
+                    TypeSystem`NestedGrid`PackagePrivate`$NotCached, 
+                    TypeSystem`NestedGrid`PackagePrivate`renderedGrid, 
+                    TypeSystem`NestedGrid`PackagePrivate`renderGrid[
+                    TypeSystem`NestedGrid`PackagePrivate`$state$$, 
+                    TypeSystem`NestedGrid`PackagePrivate`$path$$, 
+                    TypeSystem`NestedGrid`PackagePrivate`$pos$$, 
+                    TypeSystem`NestedGrid`PackagePrivate`$grid$$, 1294960035][
+                    TypeSystem`NestedGrid`PackagePrivate`tmpData$]]; If[
+                    Not[
+                    FailureQ[TypeSystem`NestedGrid`PackagePrivate`tmpGrid$]], 
+                    TypeSystem`NestedGrid`PackagePrivate`renderedGrid = 
+                    TypeSystem`NestedGrid`PackagePrivate`tmpGrid$]; Null]]; 
+                    TypeSystem`NestedGrid`PackagePrivate`initialQ = False; 
+                    TypeSystem`NestedGrid`PackagePrivate`$pos$$; If[
+                    FailureQ[
+                    TypeSystem`NestedGrid`PackagePrivate`renderedGrid], 
+                    TypeSystem`SparseGrid[
+                    TypeSystem`H["(data no longer present)"]], 
+                    If[GeneralUtilities`$DebugMode, 
+                    
+                    Row[{TypeSystem`NestedGrid`PackagePrivate`renderedGrid, 
+                    "  ", 
+                    TypeSystem`NestedGrid`PackagePrivate`formatState[
+                    TypeSystem`NestedGrid`PackagePrivate`$state$$, 
+                    TypeSystem`NestedGrid`PackagePrivate`$path$$, 
+                    TypeSystem`NestedGrid`PackagePrivate`$pos$$]}], 
+                    TypeSystem`NestedGrid`PackagePrivate`renderedGrid]]], 
+                    TrackedSymbols :> {
+                    TypeSystem`NestedGrid`PackagePrivate`$pos$$}], 
+                    DynamicModuleValues :> {}], 
+                    TypeSystem`NestedGrid`PackagePrivate`$posCell$$, 
+                    TypeSystem`NestedGrid`PackagePrivate`$topBar$$ = Dynamic[
+                    TypeSystem`NestedGrid`PackagePrivate`alignBar[
+                    TypeSystem`NestedGrid`PackagePrivate`$state$$][
+                    TypeSystem`NestedGrid`PackagePrivate`makeFramedBar[
+                    TypeSystem`PackageScope`Pathbar[
+                    TypeSystem`NestedGrid`PackagePrivate`$path$$, 
+                    TypeSystem`NestedGrid`PackagePrivate`updateState[
+                    TypeSystem`NestedGrid`PackagePrivate`$state$$, 
+                    TypeSystem`NestedGrid`PackagePrivate`$path$$, 
+                    TypeSystem`NestedGrid`PackagePrivate`$pos$$, 
+                    TypeSystem`NestedGrid`PackagePrivate`$grid$$, 
+                    1294960035]]]], 
+                    TrackedSymbols :> {
+                    TypeSystem`NestedGrid`PackagePrivate`$path$$}], 
+                    TypeSystem`NestedGrid`PackagePrivate`$bottomBar$$ = Framed[
+                    Dynamic[
+                    Replace[
+                    MouseAnnotation[Null], {
+                    TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[
+                    1294960035][Null] -> "", 
+                    TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[
+                    1294960035][
+                    Pattern[TypeSystem`NestedGrid`PackagePrivate`path, 
+                    Blank[]]] :> (
+                    TypeSystem`NestedGrid`PackagePrivate`$lastPath = 
+                    TypeSystem`NestedGrid`PackagePrivate`path; 
+                    TypeSystem`NestedGrid`PackagePrivate`makePathTrail[
+                    TypeSystem`NestedGrid`PackagePrivate`path, 
+                    TypeSystem`NestedGrid`PackagePrivate`makePathElements]), 
+                    Null :> Spacer[10], Blank[] :> Spacer[10]}], 
+                    TrackedSymbols :> {}], FrameStyle -> None, ImageMargins -> 
+                    0, FrameMargins -> 0, Alignment -> Top, 
+                    ImageSize -> {Automatic, 14}]}, 
+                    DynamicBox[
+                    ToBoxes[
+                    Column[
+                    If[TypeSystem`NestedGrid`PackagePrivate`$path$$ == {}, {
+                    TypeSystem`NestedGrid`PackagePrivate`displayScrollBar[
+                    TypeSystem`NestedGrid`PackagePrivate`$grid$$, 
+                    TypeSystem`NestedGrid`PackagePrivate`$state$$, 
+                    TypeSystem`NestedGrid`PackagePrivate`$pos$$], 
+                    TypeSystem`NestedGrid`PackagePrivate`onDesktopShow[
+                    TypeSystem`NestedGrid`PackagePrivate`alignBar[
+                    TypeSystem`NestedGrid`PackagePrivate`$state$$][
+                    TypeSystem`NestedGrid`PackagePrivate`$bottomBar$$]]}, {
+                    TypeSystem`NestedGrid`PackagePrivate`$topBar$$, 
+                    TypeSystem`NestedGrid`PackagePrivate`displayScrollBar[
+                    TypeSystem`NestedGrid`PackagePrivate`$grid$$, 
+                    TypeSystem`NestedGrid`PackagePrivate`$state$$, 
+                    TypeSystem`NestedGrid`PackagePrivate`$pos$$], 
+                    TypeSystem`NestedGrid`PackagePrivate`onDesktopShow[
+                    TypeSystem`NestedGrid`PackagePrivate`alignBar[
+                    TypeSystem`NestedGrid`PackagePrivate`$state$$][
+                    TypeSystem`NestedGrid`PackagePrivate`$bottomBar$$]]}], 
+                    Spacings -> 
+                    If[TypeSystem`NestedGrid`PackagePrivate`$path$$ == {}, 
+                    0, {{}, {0, 0.05, 0}}]], StandardForm], 
+                    TrackedSymbols :> {
+                    TypeSystem`NestedGrid`PackagePrivate`$state$$, 
+                    TypeSystem`NestedGrid`PackagePrivate`$grid$$}], 
+                    Initialization :> Block[{$ContextPath = $ContextPath}, 
+                    Needs["TypeSystem`"]], DynamicModuleValues :> {}, 
+                    BaseStyle -> {LineBreakWithin -> False}, Deinitialization :> 
+                    TypeSystem`NestedGrid`PackagePrivate`deleteState[
+                    TypeSystem`NestedGrid`PackagePrivate`$state$$]], Deploy, 
+                   DefaultBaseStyle -> "Deploy"]}, "CopyTag", 
+                 DisplayFunction -> (#& ), 
+                 InterpretationFunction -> ("Dataset[<>]"& )]],
+               Annotation[#, 
+                Dataset[
+                 Association[
+                 "L1Regularization" -> 0, "L2Regularization" -> 0.1, 
+                  "OptimizationMethod" -> "NormalEquation"], 
+                 
+                 TypeSystem`Struct[{
+                  "L1Regularization", "L2Regularization", 
+                   "OptimizationMethod"}, {
+                   TypeSystem`Atom[Integer], 
+                   TypeSystem`Atom[Real], 
+                   TypeSystem`Atom[String]}], 
+                 Association["ID" -> 32044905006426]], "Tooltip"]& ]},
+             {
+              
+              TemplateBox[{
+               TemplateBox[{5}, "Spacer1"],StyleBox["\"Standard deviation\"", 
+                 GrayLevel[0.4], StripOnInput -> False]},
+               "RowDefault"], 
+              TagBox[
+               TooltipBox[
+                TemplateBox[{"0.9829153031456687728`3.",StyleBox[
+                   
+                   TemplateBox[{
+                    "\" \[PlusMinus] \"", "0.0119489014755847795`2."}, 
+                    "RowDefault"], {10, 
+                    Opacity[0.5]}, StripOnInput -> False]},
+                 "RowDefault"],
+                
+                TemplateBox[{
+                 "\"95% confidence interval: [\"", "0.9590175001944991617`3.",
+                   "\", \"", "1.0068131060968383839`3.", "\"]\""}, 
+                 "RowDefault"],
+                TooltipStyle->{}],
+               Annotation[#, 
+                
+                Row[{"95% confidence interval: [", 0.9590175001944991617`3., 
+                  ", ", 1.0068131060968383839`3., "]"}], "Tooltip"]& ]},
+             {
+              TemplateBox[{TemplateBox[{5}, "Spacer1"],StyleBox[
+                 TagBox[
+                  TooltipBox[
+                  "\"Loss\"", "\"Mean cross entropy\"", LabelStyle -> 
+                   "TextStyling"], 
+                  Annotation[#, "Mean cross entropy", "Tooltip"]& ], 
+                 GrayLevel[0.4], StripOnInput -> False]},
+               "RowDefault"], 
+              TagBox[
+               TooltipBox[
+                TemplateBox[{"1.4010579006053092144`3.",StyleBox[
+                   
+                   TemplateBox[{
+                    "\" \[PlusMinus] \"", "0.0119249387620485123`2."}, 
+                    "RowDefault"], {10, 
+                    Opacity[0.5]}, StripOnInput -> False]},
+                 "RowDefault"],
+                
+                TemplateBox[{
+                 "\"95% confidence interval: [\"", "1.3772080230812122625`3.",
+                   "\", \"", "1.4249077781294061662`3.", "\"]\""}, 
+                 "RowDefault"],
+                TooltipStyle->{}],
+               Annotation[#, 
+                
+                Row[{"95% confidence interval: [", 1.3772080230812122625`3., 
+                  ", ", 1.4249077781294061662`3., "]"}], "Tooltip"]& ]},
+             {
+              
+              TemplateBox[{
+               TemplateBox[{5}, "Spacer1"],StyleBox[
+                "\"Single evaluation time\"", 
+                 GrayLevel[0.4], StripOnInput -> False]},
+               "RowDefault"], 
+              RowBox[{"QuantityUnits`Private`ToQuantity", "[", 
+               RowBox[{"QuantityUnits`Private`UnknownQuantity", "[", 
+                RowBox[{
+                 RowBox[{
+                 "MachineLearning`file131General`PackagePrivate`\
+iHumanReadableQuantity", "[", 
+                  RowBox[{
+                   RowBox[{"QuantityUnit", "[", 
+                    RowBox[{"UnitConvert", "[", 
+                    RowBox[{"QuantityUnits`Private`ToQuantity", "[", 
+                    RowBox[{"QuantityUnits`Private`UnknownQuantity", "[", 
+                    RowBox[{
+                    "0.001130244466044596`2.", ",", "\<\"Seconds\"\>"}], 
+                    "]"}], "]"}], "]"}], "]"}], ",", 
+                   RowBox[{"QuantityMagnitude", "[", 
+                    RowBox[{"UnitConvert", "[", 
+                    RowBox[{"QuantityUnits`Private`ToQuantity", "[", 
+                    RowBox[{"QuantityUnits`Private`UnknownQuantity", "[", 
+                    RowBox[{
+                    "0.001130244466044596`2.", ",", "\<\"Seconds\"\>"}], 
+                    "]"}], "]"}], "]"}], "]"}]}], "]"}], ",", 
+                 FractionBox["1", "\<\"Examples\"\>"]}], "]"}], "]"}]},
+             {
+              
+              TemplateBox[{
+               TemplateBox[{5}, "Spacer1"],StyleBox[
+                "\"Batch evaluation speed\"", 
+                 GrayLevel[0.4], StripOnInput -> False]},
+               "RowDefault"], 
+              RowBox[{"QuantityUnits`Private`ToQuantity", "[", 
+               RowBox[{"QuantityUnits`Private`UnknownQuantity", "[", 
+                RowBox[{
+                 RowBox[{
+                 "MachineLearning`file131General`PackagePrivate`\
+iHumanReadableQuantity", "[", 
+                  RowBox[{
+                   RowBox[{"QuantityUnit", "[", 
+                    RowBox[{"UnitConvert", "[", 
+                    RowBox[{"QuantityUnits`Private`ToQuantity", "[", 
+                    RowBox[{"QuantityUnits`Private`UnknownQuantity", "[", 
+                    RowBox[{"426567.278946468532485897`2.", ",", 
+                    FractionBox["1", "\<\"Seconds\"\>"]}], "]"}], "]"}], 
+                    "]"}], "]"}], ",", 
+                   RowBox[{"QuantityMagnitude", "[", 
+                    RowBox[{"UnitConvert", "[", 
+                    RowBox[{"QuantityUnits`Private`ToQuantity", "[", 
+                    RowBox[{"QuantityUnits`Private`UnknownQuantity", "[", 
+                    RowBox[{"426567.278946468532485897`2.", ",", 
+                    FractionBox["1", "\<\"Seconds\"\>"]}], "]"}], "]"}], 
+                    "]"}], "]"}]}], "]"}], ",", "\<\"Examples\"\>"}], "]"}], 
+               "]"}]},
+             {
+              
+              TemplateBox[{
+               TemplateBox[{5}, "Spacer1"],StyleBox["\"Predictor memory\"", 
+                 GrayLevel[0.4], StripOnInput -> False]},
+               "RowDefault"], 
+              RowBox[{
+              "MachineLearning`file131General`PackagePrivate`\
+iHumanReadableQuantity", "[", 
+               RowBox[{
+                RowBox[{"QuantityUnit", "[", 
+                 RowBox[{"UnitConvert", "[", 
+                  RowBox[{"QuantityUnits`Private`ToQuantity", "[", 
+                   RowBox[{"QuantityUnits`Private`UnknownQuantity", "[", 
+                    RowBox[{"335904", ",", "\<\"Bytes\"\>"}], "]"}], "]"}], 
+                  "]"}], "]"}], ",", 
+                RowBox[{"QuantityMagnitude", "[", 
+                 RowBox[{"UnitConvert", "[", 
+                  RowBox[{"QuantityUnits`Private`ToQuantity", "[", 
+                   RowBox[{"QuantityUnits`Private`UnknownQuantity", "[", 
+                    RowBox[{"335904", ",", "\<\"Bytes\"\>"}], "]"}], "]"}], 
+                  "]"}], "]"}]}], "]"}]},
+             {
+              
+              TemplateBox[{
+               TemplateBox[{5}, "Spacer1"],StyleBox[
+                "\"Training examples used\"", 
+                 GrayLevel[0.4], StripOnInput -> False]},
+               "RowDefault"], 
+              RowBox[{"QuantityUnits`Private`ToQuantity", "[", 
+               RowBox[{"QuantityUnits`Private`UnknownQuantity", "[", 
+                RowBox[{"7893", ",", "\<\"Examples\"\>"}], "]"}], "]"}]},
+             {
+              
+              TemplateBox[{
+               TemplateBox[{5}, "Spacer1"],StyleBox["\"Training time\"", 
+                 GrayLevel[0.4], StripOnInput -> False]},
+               "RowDefault"], 
+              RowBox[{
+              "MachineLearning`file131General`PackagePrivate`\
+iHumanReadableQuantity", "[", 
+               RowBox[{
+                RowBox[{"QuantityUnit", "[", 
+                 RowBox[{"UnitConvert", "[", 
+                  RowBox[{"QuantityUnits`Private`ToQuantity", "[", 
+                   RowBox[{"QuantityUnits`Private`UnknownQuantity", "[", 
+                    RowBox[{"3.873159781703896`", ",", "\<\"Seconds\"\>"}], 
+                    "]"}], "]"}], "]"}], "]"}], ",", 
+                RowBox[{"QuantityMagnitude", "[", 
+                 RowBox[{"UnitConvert", "[", 
+                  RowBox[{"QuantityUnits`Private`ToQuantity", "[", 
+                   RowBox[{"QuantityUnits`Private`UnknownQuantity", "[", 
+                    RowBox[{"3.873159781703896`", ",", "\<\"Seconds\"\>"}], 
+                    "]"}], "]"}], "]"}], "]"}]}], "]"}]},
+             {
+              ItemBox[
+               
+               DynamicModuleBox[{
+                MachineLearning`file4Automation`PackagePrivate`pos$$ = 1}, 
+                DynamicBox[ToBoxes[
+                  Show[
+                   Part[{
+                    Graphics[{{{{}, {{{}, {}, {
+                    Hue[0.67, 0.6, 0.6], 
+                    Directive[
+                    PointSize[0.012833333333333334`], 
+                    RGBColor[0.368417, 0.506779, 0.709798], 
+                    AbsoluteThickness[1.6]], 
+                    
+                    Line[{{2.302585092994046, 0.050325596649216}, {
+                    4.0943445622221, -0.015868290019936858`}, {
+                    5.703782474656201, -0.0180155322366997}, {
+                    7.313220387090301, -0.01723232414865223}, {
+                    8.750524669117937, -0.013383439356592648`}}]}, {
+                    Hue[0.9060679774997897, 0.6, 0.6], 
+                    Directive[
+                    Opacity[0]], 
+                    
+                    Line[{{2.302585092994046, -0.13199596014473863`}, {
+                    2.302585092994046, 0.16430602455725493`}}]}}, {{
+                    Directive[
+                    PointSize[0.012833333333333334`], 
+                    RGBColor[0.368417, 0.506779, 0.709798], 
+                    AbsoluteThickness[1.6], 
+                    AbsolutePointSize[6]], 
+                    GeometricTransformation[
+                    Inset[
+                    Style["\[FilledCircle]", FontSize -> 8.96], {0., 0.}], {{{
+                    2.302585092994046, 0.050325596649216}}, {{
+                    4.0943445622221, -0.015868290019936858`}}, {{
+                    5.703782474656201, -0.0180155322366997}}, {{
+                    7.313220387090301, -0.01723232414865223}}, {{
+                    8.750524669117937, -0.013383439356592648`}}}]}, {
+                    Directive[
+                    Opacity[0]], 
+                    GeometricTransformation[
+                    Inset[
+                    Style["\[FilledSquare]", FontSize -> 8.96], {0., 0.}], {{{
+                    2.302585092994046, -0.13199596014473863`}}, {{
+                    2.302585092994046, 
+                    0.16430602455725493`}}}]}, {}}}, {}, {}, {}, {}}}, {{{}, \
+{{{}, {}, {
+                    Hue[0.67, 0.6, 0.6], 
+                    Directive[
+                    PointSize[0.012833333333333334`], 
+                    AbsoluteThickness[1.6], 
+                    RGBColor[0.368417, 0.506779, 0.709798]], 
+                    
+                    Line[{{2.302585092994046, 0.04102626842507869}, {
+                    2.302585092994046, 0.059539243535053285`}}]}, {
+                    Hue[0.9060679774997897, 0.6, 0.6], 
+                    Directive[
+                    PointSize[0.012833333333333334`], 
+                    AbsoluteThickness[1.6], 
+                    RGBColor[0.368417, 0.506779, 0.709798]], 
+                    
+                    Line[{{4.0943445622221, -0.028114866742264353`}, {
+                    4.0943445622221, -0.0037698792428025717`}}]}, {
+                    Hue[0.1421359549995791, 0.6, 0.6], 
+                    Directive[
+                    PointSize[0.012833333333333334`], 
+                    AbsoluteThickness[1.6], 
+                    RGBColor[0.368417, 0.506779, 0.709798]], 
+                    
+                    Line[{{5.703782474656201, -0.03563412323140739}, {
+                    5.703782474656201, -0.0007019892291193211}}]}, {
+                    Hue[0.37820393249936934`, 0.6, 0.6], 
+                    Directive[
+                    PointSize[0.012833333333333334`], 
+                    AbsoluteThickness[1.6], 
+                    RGBColor[0.368417, 0.506779, 0.709798]], 
+                    
+                    Line[{{7.313220387090301, -0.029463413071049504`}, {
+                    7.313220387090301, -0.005149028905066588}}]}, {
+                    Hue[0.6142719099991583, 0.6, 0.6], 
+                    Directive[
+                    PointSize[0.012833333333333334`], 
+                    AbsoluteThickness[1.6], 
+                    RGBColor[0.368417, 0.506779, 0.709798]], 
+                    
+                    Line[{{8.750524669117937, -0.022988561737184443`}, {
+                    8.750524669117937, -0.003869698318836433}}]}}}, {}, {}, \
+{}, {}}}}, {DisplayFunction -> Identity, 
+                    GridLines -> {
+                    Charting`ScaledTickValues[{Log, Exp}][#, #2, {6, 6}]& , 
+                    Charting`ScaledTickValues[{Log, Exp}][#, #2, {6, 6}]& }, 
+                    DisplayFunction -> Identity, DisplayFunction -> Identity, 
+                    DisplayFunction -> Identity, PlotRangePadding -> {{
+                    Scaled[0.02], 0}, {
+                    Scaled[0.02], 
+                    Scaled[0.05]}}, 
+                    AxesOrigin -> {2.0622459966859275`, -0.1535017493569801}, 
+                    PlotRange -> {{2.1664392465304876`, 
+                    Log[7893]}, {-0.1484571815170716, 0.16430602455725493`}}, 
+                    PlotRangeClipping -> True, 
+                    ImagePadding -> {{30, 10}, {37, 0}}, DisplayFunction -> 
+                    Identity, AspectRatio -> GoldenRatio^(-1), 
+                    Axes -> {True, True}, AxesLabel -> {None, None}, 
+                    AxesOrigin -> {2.0622459966859275`, -0.1535017493569801}, 
+                    DisplayFunction :> Identity, 
+                    Frame -> {{True, True}, {True, True}}, 
+                    FrameLabel -> {{None, None}, {
+                    "training examples used", None}}, FrameTicks -> {{
+                    Charting`ScaledTicks[{Log, Exp}], {}}, {
+                    Charting`ScaledTicks[{Log, Exp}], {}}}, 
+                    GridLines -> {
+                    Charting`ScaledTickValues[{Log, Exp}][#, #2, {6, 6}]& , 
+                    Charting`ScaledTickValues[{Log, Exp}][#, #2, {6, 6}]& }, 
+                    GridLinesStyle -> Directive[
+                    GrayLevel[0.5, 0.4]], ImageMargins -> 0, 
+                    ImagePadding -> {{30, 10}, {37, 0}}, ImageSize -> 330, 
+                    LabelStyle -> 10, 
+                    Method -> {
+                    "CoordinatesToolOptions" -> {"DisplayFunction" -> ({
+                    (Exp[#]& )[
+                    Part[#, 1]], 
+                    (Exp[#]& )[
+                    Part[#, 2]]}& ), "CopiedValueFunction" -> ({
+                    (Exp[#]& )[
+                    Part[#, 1]], 
+                    (Exp[#]& )[
+                    Part[#, 2]]}& )}}, PlotRange -> {{2.1664392465304876`, 
+                    Log[7893]}, {-0.1484571815170716, 0.16430602455725493`}}, 
+                    PlotRangeClipping -> True, PlotRangePadding -> {{
+                    Scaled[0.02], 0}, {
+                    Scaled[0.02], 
+                    Scaled[0.05]}}, Ticks -> {
+                    Charting`ScaledTicks[{Log, Exp}], 
+                    Charting`ScaledTicks[{Log, Exp}]}}], 
+                    Graphics[{{{{}, {{{}, {}, {
+                    Hue[0.67, 0.6, 0.6], 
+                    Directive[
+                    PointSize[0.012833333333333334`], 
+                    RGBColor[0.368417, 0.506779, 0.709798], 
+                    AbsoluteThickness[1.6]], 
+                    
+                    Line[{{2.302585092994046, 1.4952422409099682`}, {
+                    4.0943445622221, 1.4024901947582145`}, {5.703782474656201,
+                     1.3995756370624741`}, {7.313220387090301, 
+                    1.4010579006053092`}, {8.750524669117937, 
+                    1.4042990161427156`}}]}, {
+                    Hue[0.9060679774997897, 0.6, 0.6], 
+                    Directive[
+                    Opacity[0]], 
+                    
+                    Line[{{2.302585092994046, 1.2460352007583069`}, {
+                    2.302585092994046, 1.6794907644749688`}}]}}, {{
+                    Directive[
+                    PointSize[0.012833333333333334`], 
+                    RGBColor[0.368417, 0.506779, 0.709798], 
+                    AbsoluteThickness[1.6], 
+                    AbsolutePointSize[6]], 
+                    GeometricTransformation[
+                    Inset[
+                    Style["\[FilledCircle]", FontSize -> 8.96], {0., 0.}], {{{
+                    2.302585092994046, 1.4952422409099682`}}, {{
+                    4.0943445622221, 1.4024901947582145`}}, {{
+                    5.703782474656201, 1.3995756370624741`}}, {{
+                    7.313220387090301, 1.4010579006053092`}}, {{
+                    8.750524669117937, 1.4042990161427156`}}}]}, {
+                    Directive[
+                    Opacity[0]], 
+                    GeometricTransformation[
+                    Inset[
+                    Style["\[FilledSquare]", FontSize -> 8.96], {0., 0.}], {{{
+                    2.302585092994046, 1.2460352007583069`}}, {{
+                    2.302585092994046, 
+                    1.6794907644749688`}}}]}, {}}}, {}, {}, {}, {}}}, {{{}, \
+{{{}, {}, {
+                    Hue[0.67, 0.6, 0.6], 
+                    Directive[
+                    PointSize[0.012833333333333334`], 
+                    AbsoluteThickness[1.6], 
+                    RGBColor[0.368417, 0.506779, 0.709798]], 
+                    
+                    Line[{{2.302585092994046, 1.4861445894112184`}, {
+                    2.302585092994046, 1.504339892408718}}]}, {
+                    Hue[0.9060679774997897, 0.6, 0.6], 
+                    Directive[
+                    PointSize[0.012833333333333334`], 
+                    AbsoluteThickness[1.6], 
+                    RGBColor[0.368417, 0.506779, 0.709798]], 
+                    
+                    Line[{{4.0943445622221, 1.3905994458416238`}, {
+                    4.0943445622221, 1.4143809436748052`}}]}, {
+                    Hue[0.1421359549995791, 0.6, 0.6], 
+                    Directive[
+                    PointSize[0.012833333333333334`], 
+                    AbsoluteThickness[1.6], 
+                    RGBColor[0.368417, 0.506779, 0.709798]], 
+                    
+                    Line[{{5.703782474656201, 1.3823214658957463`}, {
+                    5.703782474656201, 1.416829808229202}}]}, {
+                    Hue[0.37820393249936934`, 0.6, 0.6], 
+                    Directive[
+                    PointSize[0.012833333333333334`], 
+                    AbsoluteThickness[1.6], 
+                    RGBColor[0.368417, 0.506779, 0.709798]], 
+                    
+                    Line[{{7.313220387090301, 1.3891329618432606`}, {
+                    7.313220387090301, 1.4129828393673578`}}]}, {
+                    Hue[0.6142719099991583, 0.6, 0.6], 
+                    Directive[
+                    PointSize[0.012833333333333334`], 
+                    AbsoluteThickness[1.6], 
+                    RGBColor[0.368417, 0.506779, 0.709798]], 
+                    
+                    Line[{{8.750524669117937, 1.3946523470173546`}, {
+                    8.750524669117937, 
+                    1.4139456852680765`}}]}}}, {}, {}, {}, {}}}}, {
+                    DisplayFunction -> Identity, 
+                    GridLines -> {
+                    Charting`ScaledTickValues[{Log, Exp}][#, #2, {6, 6}]& , 
+                    Charting`ScaledTickValues[{Identity, Identity}][#, #2, {6,
+                     6}]& }, DisplayFunction -> Identity, DisplayFunction -> 
+                    Identity, DisplayFunction -> Identity, 
+                    PlotRangePadding -> {{
+                    Scaled[0.02], 0}, {
+                    Scaled[0.05], 
+                    Scaled[0.05]}}, 
+                    AxesOrigin -> {2.0622459966859275`, 1.2243624225724739`}, 
+                    PlotRange -> {{2.1664392465304876`, 
+                    Log[7893]}, {1.2460352007583069`, 1.6794907644749688`}}, 
+                    PlotRangeClipping -> True, 
+                    ImagePadding -> {{30, 10}, {37, 0}}, DisplayFunction -> 
+                    Identity, AspectRatio -> GoldenRatio^(-1), 
+                    Axes -> {True, True}, AxesLabel -> {None, None}, 
+                    AxesOrigin -> {2.0622459966859275`, 1.2243624225724739`}, 
+                    DisplayFunction :> Identity, 
+                    Frame -> {{True, True}, {True, True}}, 
+                    FrameLabel -> {{None, None}, {
+                    "training examples used", None}}, 
+                    FrameTicks -> {{Automatic, None}, {
+                    Charting`ScaledTicks[{Log, Exp}], {}}}, 
+                    GridLines -> {
+                    Charting`ScaledTickValues[{Log, Exp}][#, #2, {6, 6}]& , 
+                    Charting`ScaledTickValues[{Identity, Identity}][#, #2, {6,
+                     6}]& }, GridLinesStyle -> Directive[
+                    GrayLevel[0.5, 0.4]], ImageMargins -> 0, 
+                    ImagePadding -> {{30, 10}, {37, 0}}, ImageSize -> 330, 
+                    LabelStyle -> 10, 
+                    Method -> {
+                    "CoordinatesToolOptions" -> {"DisplayFunction" -> ({
+                    (Exp[#]& )[
+                    Part[#, 1]], 
+                    (Identity[#]& )[
+                    Part[#, 2]]}& ), "CopiedValueFunction" -> ({
+                    (Exp[#]& )[
+                    Part[#, 1]], 
+                    (Identity[#]& )[
+                    Part[#, 2]]}& )}}, PlotRange -> {{2.1664392465304876`, 
+                    Log[7893]}, {1.2460352007583069`, 1.6794907644749688`}}, 
+                    PlotRangeClipping -> True, PlotRangePadding -> {{
+                    Scaled[0.02], 0}, {
+                    Scaled[0.05], 
+                    Scaled[0.05]}}, Ticks -> {
+                    Charting`ScaledTicks[{Log, Exp}], Automatic}}], 
+                    Graphics[{{{{}, {{{}, {}, 
+                    Tooltip[{
+                    Hue[0.67, 0.6, 0.6], 
+                    Directive[
+                    PointSize[0.011000000000000001`], 
+                    RGBColor[0.368417, 0.506779, 0.709798], 
+                    AbsoluteThickness[1.6]], 
+                    
+                    Line[{{2.302585092994046, 0.371799506325458}, {
+                    4.0943445622221, 0.3426175001003748}, {5.703782474656201, 
+                    0.3400196566225976}, {7.313220387090301, 
+                    0.3397067071495611}, {8.750524669117937, 
+                    0.3463222463566274}}]}, "LinearRegression"], 
+                    Tooltip[{
+                    Hue[0.9060679774997897, 0.6, 0.6], 
+                    Directive[
+                    PointSize[0.011000000000000001`], 
+                    RGBColor[0.880722, 0.611041, 0.142051], 
+                    AbsoluteThickness[1.6]], 
+                    
+                    Line[{{2.302585092994046, 0.3995459315070766}, {
+                    4.0943445622221, 0.3848194829035366}, {5.703782474656201, 
+                    0.38480827621721647`}, {7.313220387090301, 
+                    0.38130420408157556`}, {8.750524669117937, 
+                    0.38401684765524574`}}]}, "LinearRegression"], 
+                    Tooltip[{
+                    Hue[0.1421359549995791, 0.6, 0.6], 
+                    Directive[
+                    PointSize[0.011000000000000001`], 
+                    RGBColor[0.560181, 0.691569, 0.194885], 
+                    AbsoluteThickness[1.6]], 
+                    
+                    Line[{{2.302585092994046, 0.3768538751148133}, {
+                    4.0943445622221, 0.3448057522694483}, {5.703782474656201, 
+                    0.34236329823787504`}, {7.313220387090301, 
+                    0.34011175142085415`}, {8.750524669117937, 
+                    0.34135208014241714`}}]}, "LinearRegression"], 
+                    Tooltip[{
+                    Hue[0.37820393249936934`, 0.6, 0.6], 
+                    Directive[
+                    PointSize[0.011000000000000001`], 
+                    RGBColor[0.922526, 0.385626, 0.209179], 
+                    AbsoluteThickness[1.6]], 
+                    
+                    Line[{{2.302585092994046, 0.37685422088143206`}, {
+                    4.0943445622221, 0.34532347746034975`}, {
+                    5.703782474656201, 0.34236330627714634`}, {
+                    7.313220387090301, 0.34116452756503346`}, {
+                    8.750524669117937, 0.34215584407696115`}}]}, 
+                    "LinearRegression"], 
+                    Tooltip[{
+                    Hue[0.6142719099991583, 0.6, 0.6], 
+                    Directive[
+                    PointSize[0.011000000000000001`], 
+                    RGBColor[0.528488, 0.470624, 0.701351], 
+                    AbsoluteThickness[1.6]], 
+                    
+                    Line[{{2.302585092994046, 0.4022882277700408}, {
+                    4.0943445622221, 0.38142085053738173`}, {
+                    5.703782474656201, 0.3846465189354595}, {
+                    7.313220387090301, 0.382083449148751}, {8.750524669117937,
+                     0.37972084594296096`}}]}, "LinearRegression"], 
+                    Tooltip[{
+                    Hue[0.8503398874989481, 0.6, 0.6], 
+                    Directive[
+                    PointSize[0.011000000000000001`], 
+                    RGBColor[0.772079, 0.431554, 0.102387], 
+                    AbsoluteThickness[1.6]], 
+                    
+                    Line[{{2.302585092994046, 0.37143274200266574`}, {
+                    4.0943445622221, 0.3383392410874262}, {5.703782474656201, 
+                    0.34235584248212214`}, {7.313220387090301, 
+                    0.3372275945560709}, {8.750524669117937, 
+                    0.3395382573884021}}]}, "LinearRegression"], 
+                    Tooltip[{
+                    Hue[0.08640786499873876, 0.6, 0.6], 
+                    Directive[
+                    PointSize[0.011000000000000001`], 
+                    RGBColor[0.363898, 0.618501, 0.782349], 
+                    AbsoluteThickness[1.6]], 
+                    
+                    Line[{{2.302585092994046, 0.37685418574017476`}, {
+                    4.0943445622221, 0.3378910948335655}, {5.703782474656201, 
+                    0.33616907428820925`}, {7.313220387090301, 
+                    0.3402760938862979}, {8.750524669117937, 
+                    0.3431556788643941}}]}, "LinearRegression"], 
+                    Tooltip[{
+                    Hue[0.3224758424985268, 0.6, 0.6], 
+                    Directive[
+                    PointSize[0.011000000000000001`], 
+                    RGBColor[1, 0.75, 0], 
+                    AbsoluteThickness[1.6]], 
+                    
+                    Line[{{2.302585092994046, 0.36839106094383356`}, {
+                    4.0943445622221, 0.3382493671305352}, {5.703782474656201, 
+                    0.33618352148245806`}, {7.313220387090301, 
+                    0.33627562485558965`}, {8.750524669117937, 
+                    0.3402347634039586}}]}, "LinearRegression"], 
+                    Tooltip[{
+                    Hue[0.5585438199983166, 0.6, 0.6], 
+                    Directive[
+                    PointSize[0.011000000000000001`], 
+                    RGBColor[0.647624, 0.37816, 0.614037], 
+                    AbsoluteThickness[1.6]], 
+                    
+                    Line[{{2.302585092994046, 0.4042609540442709}, {
+                    4.0943445622221, 0.38118093938570013`}, {
+                    5.703782474656201, 0.37998044108890927`}, {
+                    7.313220387090301, 0.3734974974891061}, {
+                    8.750524669117937, 0.3590684694341696}}]}, 
+                    "LinearRegression"], 
+                    Tooltip[{
+                    Hue[0.7946117974981064, 0.6, 0.6], 
+                    Directive[
+                    PointSize[0.011000000000000001`], 
+                    RGBColor[0.571589, 0.586483, 0.], 
+                    AbsoluteThickness[1.6]], 
+                    
+                    Line[{{2.302585092994046, 0.3672226712811406}, {
+                    4.0943445622221, 0.34503331109740026`}, {
+                    5.703782474656201, 0.34039836804466495`}, {
+                    7.313220387090301, 0.33623739761633603`}, {
+                    8.750524669117937, 0.34662616384357775`}}]}, 
+                    "LinearRegression"], 
+                    Tooltip[{
+                    Hue[0.030679774997896203`, 0.6, 0.6], 
+                    Directive[
+                    PointSize[0.011000000000000001`], 
+                    RGBColor[0.915, 0.3325, 0.2125], 
+                    AbsoluteThickness[1.6]], 
+                    Line[{{4.0943445622221, 0.3820442282092595}, {
+                    5.703782474656201, 0.36885325598505997`}, {
+                    7.313220387090301, 0.3465282547879518}, {
+                    8.750524669117937, 0.3455834361916677}}]}, 
+                    "LinearRegression"], 
+                    Tooltip[{
+                    Hue[0.266747752497686, 0.6, 0.6], 
+                    Directive[
+                    PointSize[0.011000000000000001`], 
+                    RGBColor[0.40082222609352647`, 0.5220066643438841, 0.85], 
+                    AbsoluteThickness[1.6]], 
+                    
+                    Line[{{4.0943445622221, 0.3650285300422776}, {
+                    5.703782474656201, 0.3435513856118185}, {
+                    7.313220387090301, 0.3397374087353476}, {
+                    8.750524669117937, 0.34318871704309833`}}]}, 
+                    "LinearRegression"], 
+                    Tooltip[{
+                    Hue[0.5028157299974758, 0.6, 0.6], 
+                    Directive[
+                    PointSize[0.011000000000000001`], 
+                    RGBColor[
+                    0.9728288904374106, 0.621644452187053, 
+                    0.07336199581899142], 
+                    AbsoluteThickness[1.6]], 
+                    
+                    Line[{{4.0943445622221, 0.3444484170551871}, {
+                    5.703782474656201, 0.3390893893054533}, {
+                    7.313220387090301, 0.3425104761748987}, {
+                    8.750524669117937, 0.3426922156048548}}]}, 
+                    "LinearRegression"]}}, {}, {}, {}, {}}}}, {
+                    DisplayFunction -> Identity, 
+                    GridLines -> {
+                    Charting`ScaledTickValues[{Log, Exp}][#, #2, {6, 6}]& , 
+                    Charting`ScaledTickValues[{Log, Exp}][#, #2, {6, 6}]& }, 
+                    DisplayFunction -> Identity, DisplayFunction -> Identity, 
+                    DisplayFunction -> Identity, PlotRangePadding -> {{
+                    Scaled[0.02], 0}, {
+                    Scaled[0.02], 
+                    Scaled[0.05]}}, 
+                    AxesOrigin -> {2.0622459966859275`, 0.3312269217252693}, 
+                    PlotRange -> {{2.1664392465304876`, 
+                    Log[7893]}, {0.3323861920795391, 0.4042609540442709}}, 
+                    PlotRangeClipping -> True, 
+                    ImagePadding -> {{30, 10}, {37, 0}}, DisplayFunction -> 
+                    Identity, AspectRatio -> GoldenRatio^(-1), 
+                    Axes -> {True, True}, AxesLabel -> {None, None}, 
+                    AxesOrigin -> {2.0622459966859275`, 0.3312269217252693}, 
+                    DisplayFunction :> Identity, 
+                    Frame -> {{True, True}, {True, True}}, 
+                    FrameLabel -> {{None, None}, {
+                    "training examples used", None}}, FrameTicks -> {{
+                    Charting`ScaledTicks[{Log, Exp}], {}}, {
+                    Charting`ScaledTicks[{Log, Exp}], {}}}, 
+                    GridLines -> {
+                    Charting`ScaledTickValues[{Log, Exp}][#, #2, {6, 6}]& , 
+                    Charting`ScaledTickValues[{Log, Exp}][#, #2, {6, 6}]& }, 
+                    GridLinesStyle -> Directive[
+                    GrayLevel[0.5, 0.4]], ImageMargins -> 0, 
+                    ImagePadding -> {{30, 10}, {37, 0}}, ImageSize -> 330, 
+                    LabelStyle -> 10, 
+                    Method -> {
+                    "CoordinatesToolOptions" -> {"DisplayFunction" -> ({
+                    (Exp[#]& )[
+                    Part[#, 1]], 
+                    (Exp[#]& )[
+                    Part[#, 2]]}& ), "CopiedValueFunction" -> ({
+                    (Exp[#]& )[
+                    Part[#, 1]], 
+                    (Exp[#]& )[
+                    Part[#, 2]]}& )}}, PlotRange -> {{2.1664392465304876`, 
+                    Log[7893]}, {0.3323861920795391, 0.4042609540442709}}, 
+                    PlotRangeClipping -> True, PlotRangePadding -> {{
+                    Scaled[0.02], 0}, {
+                    Scaled[0.02], 
+                    Scaled[0.05]}}, Ticks -> {
+                    Charting`ScaledTicks[{Log, Exp}], 
+                    Charting`ScaledTicks[{Log, Exp}]}}]}, 
+                    MachineLearning`file4Automation`PackagePrivate`pos$$], 
+                   PlotLabel -> Grid[{{
+                    Button[
+                    Deploy[
+                    MouseAppearance[
+                    Mouseover[
+                    Graphics[{
+                    GrayLevel[0.25], 
+                    Line[{{0, 0.8}, {-1, 0}, {0, -0.8}}]}, 
+                    ImageSize -> {Automatic, 10}, 
+                    ImagePadding -> {{1, 1}, {1, 1}}, BaselinePosition -> 
+                    Scaled[0.1]], 
+                    Graphics[{
+                    RGBColor[
+                    0.27450980392156865`, 0.5372549019607843, 
+                    0.792156862745098], 
+                    Line[{{0, 0.8}, {-1, 0}, {0, -0.8}}]}, 
+                    ImageSize -> {Automatic, 10}, 
+                    ImagePadding -> {{1, 1}, {1, 1}}, BaselinePosition -> 
+                    Scaled[0.1]]], "LinkHand"]], 
+                    MachineLearning`file4Automation`PackagePrivate`pos$$ = 
+                    Max[MachineLearning`file4Automation`PackagePrivate`pos$$ - 
+                    1, 1], Appearance -> "Frameless"], 
+                    Part[{"Standard deviation", 
+                    Tooltip[
+                    "Learning curve", 
+                    "mean cross entropy for best algorithm at each training \
+size"], 
+                    Tooltip[
+                    "Learning curves for all algorithms", 
+                    "mean cross entropy at each training size"]}, 
+                    MachineLearning`file4Automation`PackagePrivate`pos$$], 
+                    Button[
+                    Deploy[
+                    MouseAppearance[
+                    Mouseover[
+                    Graphics[{
+                    GrayLevel[0.25], 
+                    Line[{{0, 0.8}, {1, 0}, {0, -0.8}}]}, 
+                    ImageSize -> {Automatic, 10}, 
+                    ImagePadding -> {{1, 1}, {1, 1}}, BaselinePosition -> 
+                    Scaled[0.1]], 
+                    Graphics[{
+                    RGBColor[
+                    0.27450980392156865`, 0.5372549019607843, 
+                    0.792156862745098], 
+                    Line[{{0, 0.8}, {1, 0}, {0, -0.8}}]}, 
+                    ImageSize -> {Automatic, 10}, 
+                    ImagePadding -> {{1, 1}, {1, 1}}, BaselinePosition -> 
+                    Scaled[0.1]]], "LinkHand"]], 
+                    MachineLearning`file4Automation`PackagePrivate`pos$$ = 
+                    Min[MachineLearning`file4Automation`PackagePrivate`pos$$ + 
+                    1, 
+                    Length[{
+                    Graphics[{{{{}, {{{}, {}, {
+                    Hue[0.67, 0.6, 0.6], 
+                    Directive[
+                    PointSize[0.012833333333333334`], 
+                    RGBColor[0.368417, 0.506779, 0.709798], 
+                    AbsoluteThickness[1.6]], 
+                    
+                    Line[{{2.302585092994046, 0.050325596649216}, {
+                    4.0943445622221, -0.015868290019936858`}, {
+                    5.703782474656201, -0.0180155322366997}, {
+                    7.313220387090301, -0.01723232414865223}, {
+                    8.750524669117937, -0.013383439356592648`}}]}, {
+                    Hue[0.9060679774997897, 0.6, 0.6], 
+                    Directive[
+                    Opacity[0]], 
+                    
+                    Line[{{2.302585092994046, -0.13199596014473863`}, {
+                    2.302585092994046, 0.16430602455725493`}}]}}, {{
+                    Directive[
+                    PointSize[0.012833333333333334`], 
+                    RGBColor[0.368417, 0.506779, 0.709798], 
+                    AbsoluteThickness[1.6], 
+                    AbsolutePointSize[6]], 
+                    GeometricTransformation[
+                    Inset[
+                    Style["\[FilledCircle]", FontSize -> 8.96], {0., 0.}], {{{
+                    2.302585092994046, 0.050325596649216}}, {{
+                    4.0943445622221, -0.015868290019936858`}}, {{
+                    5.703782474656201, -0.0180155322366997}}, {{
+                    7.313220387090301, -0.01723232414865223}}, {{
+                    8.750524669117937, -0.013383439356592648`}}}]}, {
+                    Directive[
+                    Opacity[0]], 
+                    GeometricTransformation[
+                    Inset[
+                    Style["\[FilledSquare]", FontSize -> 8.96], {0., 0.}], {{{
+                    2.302585092994046, -0.13199596014473863`}}, {{
+                    2.302585092994046, 
+                    0.16430602455725493`}}}]}, {}}}, {}, {}, {}, {}}}, {{{}, \
+{{{}, {}, {
+                    Hue[0.67, 0.6, 0.6], 
+                    Directive[
+                    PointSize[0.012833333333333334`], 
+                    AbsoluteThickness[1.6], 
+                    RGBColor[0.368417, 0.506779, 0.709798]], 
+                    
+                    Line[{{2.302585092994046, 0.04102626842507869}, {
+                    2.302585092994046, 0.059539243535053285`}}]}, {
+                    Hue[0.9060679774997897, 0.6, 0.6], 
+                    Directive[
+                    PointSize[0.012833333333333334`], 
+                    AbsoluteThickness[1.6], 
+                    RGBColor[0.368417, 0.506779, 0.709798]], 
+                    
+                    Line[{{4.0943445622221, -0.028114866742264353`}, {
+                    4.0943445622221, -0.0037698792428025717`}}]}, {
+                    Hue[0.1421359549995791, 0.6, 0.6], 
+                    Directive[
+                    PointSize[0.012833333333333334`], 
+                    AbsoluteThickness[1.6], 
+                    RGBColor[0.368417, 0.506779, 0.709798]], 
+                    
+                    Line[{{5.703782474656201, -0.03563412323140739}, {
+                    5.703782474656201, -0.0007019892291193211}}]}, {
+                    Hue[0.37820393249936934`, 0.6, 0.6], 
+                    Directive[
+                    PointSize[0.012833333333333334`], 
+                    AbsoluteThickness[1.6], 
+                    RGBColor[0.368417, 0.506779, 0.709798]], 
+                    
+                    Line[{{7.313220387090301, -0.029463413071049504`}, {
+                    7.313220387090301, -0.005149028905066588}}]}, {
+                    Hue[0.6142719099991583, 0.6, 0.6], 
+                    Directive[
+                    PointSize[0.012833333333333334`], 
+                    AbsoluteThickness[1.6], 
+                    RGBColor[0.368417, 0.506779, 0.709798]], 
+                    
+                    Line[{{8.750524669117937, -0.022988561737184443`}, {
+                    8.750524669117937, -0.003869698318836433}}]}}}, {}, {}, \
+{}, {}}}}, {DisplayFunction -> Identity, 
+                    GridLines -> {
+                    Charting`ScaledTickValues[{Log, Exp}][#, #2, {6, 6}]& , 
+                    Charting`ScaledTickValues[{Log, Exp}][#, #2, {6, 6}]& }, 
+                    DisplayFunction -> Identity, DisplayFunction -> Identity, 
+                    DisplayFunction -> Identity, PlotRangePadding -> {{
+                    Scaled[0.02], 0}, {
+                    Scaled[0.02], 
+                    Scaled[0.05]}}, 
+                    AxesOrigin -> {2.0622459966859275`, -0.1535017493569801}, 
+                    PlotRange -> {{2.1664392465304876`, 
+                    Log[7893]}, {-0.1484571815170716, 0.16430602455725493`}}, 
+                    PlotRangeClipping -> True, 
+                    ImagePadding -> {{30, 10}, {37, 0}}, DisplayFunction -> 
+                    Identity, AspectRatio -> GoldenRatio^(-1), 
+                    Axes -> {True, True}, AxesLabel -> {None, None}, 
+                    AxesOrigin -> {2.0622459966859275`, -0.1535017493569801}, 
+                    DisplayFunction :> Identity, 
+                    Frame -> {{True, True}, {True, True}}, 
+                    FrameLabel -> {{None, None}, {
+                    "training examples used", None}}, FrameTicks -> {{
+                    Charting`ScaledTicks[{Log, Exp}], {}}, {
+                    Charting`ScaledTicks[{Log, Exp}], {}}}, 
+                    GridLines -> {
+                    Charting`ScaledTickValues[{Log, Exp}][#, #2, {6, 6}]& , 
+                    Charting`ScaledTickValues[{Log, Exp}][#, #2, {6, 6}]& }, 
+                    GridLinesStyle -> Directive[
+                    GrayLevel[0.5, 0.4]], ImageMargins -> 0, 
+                    ImagePadding -> {{30, 10}, {37, 0}}, ImageSize -> 330, 
+                    LabelStyle -> 10, 
+                    Method -> {
+                    "CoordinatesToolOptions" -> {"DisplayFunction" -> ({
+                    (Exp[#]& )[
+                    Part[#, 1]], 
+                    (Exp[#]& )[
+                    Part[#, 2]]}& ), "CopiedValueFunction" -> ({
+                    (Exp[#]& )[
+                    Part[#, 1]], 
+                    (Exp[#]& )[
+                    Part[#, 2]]}& )}}, PlotRange -> {{2.1664392465304876`, 
+                    Log[7893]}, {-0.1484571815170716, 0.16430602455725493`}}, 
+                    PlotRangeClipping -> True, PlotRangePadding -> {{
+                    Scaled[0.02], 0}, {
+                    Scaled[0.02], 
+                    Scaled[0.05]}}, Ticks -> {
+                    Charting`ScaledTicks[{Log, Exp}], 
+                    Charting`ScaledTicks[{Log, Exp}]}}], 
+                    Graphics[{{{{}, {{{}, {}, {
+                    Hue[0.67, 0.6, 0.6], 
+                    Directive[
+                    PointSize[0.012833333333333334`], 
+                    RGBColor[0.368417, 0.506779, 0.709798], 
+                    AbsoluteThickness[1.6]], 
+                    
+                    Line[{{2.302585092994046, 1.4952422409099682`}, {
+                    4.0943445622221, 1.4024901947582145`}, {5.703782474656201,
+                     1.3995756370624741`}, {7.313220387090301, 
+                    1.4010579006053092`}, {8.750524669117937, 
+                    1.4042990161427156`}}]}, {
+                    Hue[0.9060679774997897, 0.6, 0.6], 
+                    Directive[
+                    Opacity[0]], 
+                    
+                    Line[{{2.302585092994046, 1.2460352007583069`}, {
+                    2.302585092994046, 1.6794907644749688`}}]}}, {{
+                    Directive[
+                    PointSize[0.012833333333333334`], 
+                    RGBColor[0.368417, 0.506779, 0.709798], 
+                    AbsoluteThickness[1.6], 
+                    AbsolutePointSize[6]], 
+                    GeometricTransformation[
+                    Inset[
+                    Style["\[FilledCircle]", FontSize -> 8.96], {0., 0.}], {{{
+                    2.302585092994046, 1.4952422409099682`}}, {{
+                    4.0943445622221, 1.4024901947582145`}}, {{
+                    5.703782474656201, 1.3995756370624741`}}, {{
+                    7.313220387090301, 1.4010579006053092`}}, {{
+                    8.750524669117937, 1.4042990161427156`}}}]}, {
+                    Directive[
+                    Opacity[0]], 
+                    GeometricTransformation[
+                    Inset[
+                    Style["\[FilledSquare]", FontSize -> 8.96], {0., 0.}], {{{
+                    2.302585092994046, 1.2460352007583069`}}, {{
+                    2.302585092994046, 
+                    1.6794907644749688`}}}]}, {}}}, {}, {}, {}, {}}}, {{{}, \
+{{{}, {}, {
+                    Hue[0.67, 0.6, 0.6], 
+                    Directive[
+                    PointSize[0.012833333333333334`], 
+                    AbsoluteThickness[1.6], 
+                    RGBColor[0.368417, 0.506779, 0.709798]], 
+                    Line[{{2.302585092994046, 1.4861445894112184`}, {
+                    2.302585092994046, 1.504339892408718}}]}, {
+                    Hue[0.9060679774997897, 0.6, 0.6], 
+                    Directive[
+                    PointSize[0.012833333333333334`], 
+                    AbsoluteThickness[1.6], 
+                    RGBColor[0.368417, 0.506779, 0.709798]], 
+                    
+                    Line[{{4.0943445622221, 1.3905994458416238`}, {
+                    4.0943445622221, 1.4143809436748052`}}]}, {
+                    Hue[0.1421359549995791, 0.6, 0.6], 
+                    Directive[
+                    PointSize[0.012833333333333334`], 
+                    AbsoluteThickness[1.6], 
+                    RGBColor[0.368417, 0.506779, 0.709798]], 
+                    
+                    Line[{{5.703782474656201, 1.3823214658957463`}, {
+                    5.703782474656201, 1.416829808229202}}]}, {
+                    Hue[0.37820393249936934`, 0.6, 0.6], 
+                    Directive[
+                    PointSize[0.012833333333333334`], 
+                    AbsoluteThickness[1.6], 
+                    RGBColor[0.368417, 0.506779, 0.709798]], 
+                    
+                    Line[{{7.313220387090301, 1.3891329618432606`}, {
+                    7.313220387090301, 1.4129828393673578`}}]}, {
+                    Hue[0.6142719099991583, 0.6, 0.6], 
+                    Directive[
+                    PointSize[0.012833333333333334`], 
+                    AbsoluteThickness[1.6], 
+                    RGBColor[0.368417, 0.506779, 0.709798]], 
+                    
+                    Line[{{8.750524669117937, 1.3946523470173546`}, {
+                    8.750524669117937, 
+                    1.4139456852680765`}}]}}}, {}, {}, {}, {}}}}, {
+                    DisplayFunction -> Identity, 
+                    GridLines -> {
+                    Charting`ScaledTickValues[{Log, Exp}][#, #2, {6, 6}]& , 
+                    Charting`ScaledTickValues[{Identity, Identity}][#, #2, {6,
+                     6}]& }, DisplayFunction -> Identity, DisplayFunction -> 
+                    Identity, DisplayFunction -> Identity, 
+                    PlotRangePadding -> {{
+                    Scaled[0.02], 0}, {
+                    Scaled[0.05], 
+                    Scaled[0.05]}}, 
+                    AxesOrigin -> {2.0622459966859275`, 1.2243624225724739`}, 
+                    PlotRange -> {{2.1664392465304876`, 
+                    Log[7893]}, {1.2460352007583069`, 1.6794907644749688`}}, 
+                    PlotRangeClipping -> True, 
+                    ImagePadding -> {{30, 10}, {37, 0}}, DisplayFunction -> 
+                    Identity, AspectRatio -> GoldenRatio^(-1), 
+                    Axes -> {True, True}, AxesLabel -> {None, None}, 
+                    AxesOrigin -> {2.0622459966859275`, 1.2243624225724739`}, 
+                    DisplayFunction :> Identity, 
+                    Frame -> {{True, True}, {True, True}}, 
+                    FrameLabel -> {{None, None}, {
+                    "training examples used", None}}, 
+                    FrameTicks -> {{Automatic, None}, {
+                    Charting`ScaledTicks[{Log, Exp}], {}}}, 
+                    GridLines -> {
+                    Charting`ScaledTickValues[{Log, Exp}][#, #2, {6, 6}]& , 
+                    Charting`ScaledTickValues[{Identity, Identity}][#, #2, {6,
+                     6}]& }, GridLinesStyle -> Directive[
+                    GrayLevel[0.5, 0.4]], ImageMargins -> 0, 
+                    ImagePadding -> {{30, 10}, {37, 0}}, ImageSize -> 330, 
+                    LabelStyle -> 10, 
+                    Method -> {
+                    "CoordinatesToolOptions" -> {"DisplayFunction" -> ({
+                    (Exp[#]& )[
+                    Part[#, 1]], 
+                    (Identity[#]& )[
+                    Part[#, 2]]}& ), "CopiedValueFunction" -> ({
+                    (Exp[#]& )[
+                    Part[#, 1]], 
+                    (Identity[#]& )[
+                    Part[#, 2]]}& )}}, PlotRange -> {{2.1664392465304876`, 
+                    Log[7893]}, {1.2460352007583069`, 1.6794907644749688`}}, 
+                    PlotRangeClipping -> True, PlotRangePadding -> {{
+                    Scaled[0.02], 0}, {
+                    Scaled[0.05], 
+                    Scaled[0.05]}}, Ticks -> {
+                    Charting`ScaledTicks[{Log, Exp}], Automatic}}], 
+                    Graphics[{{{{}, {{{}, {}, 
+                    Tooltip[{
+                    Hue[0.67, 0.6, 0.6], 
+                    Directive[
+                    PointSize[0.011000000000000001`], 
+                    RGBColor[0.368417, 0.506779, 0.709798], 
+                    AbsoluteThickness[1.6]], 
+                    
+                    Line[{{2.302585092994046, 0.371799506325458}, {
+                    4.0943445622221, 0.3426175001003748}, {5.703782474656201, 
+                    0.3400196566225976}, {7.313220387090301, 
+                    0.3397067071495611}, {8.750524669117937, 
+                    0.3463222463566274}}]}, "LinearRegression"], 
+                    Tooltip[{
+                    Hue[0.9060679774997897, 0.6, 0.6], 
+                    Directive[
+                    PointSize[0.011000000000000001`], 
+                    RGBColor[0.880722, 0.611041, 0.142051], 
+                    AbsoluteThickness[1.6]], 
+                    
+                    Line[{{2.302585092994046, 0.3995459315070766}, {
+                    4.0943445622221, 0.3848194829035366}, {5.703782474656201, 
+                    0.38480827621721647`}, {7.313220387090301, 
+                    0.38130420408157556`}, {8.750524669117937, 
+                    0.38401684765524574`}}]}, "LinearRegression"], 
+                    Tooltip[{
+                    Hue[0.1421359549995791, 0.6, 0.6], 
+                    Directive[
+                    PointSize[0.011000000000000001`], 
+                    RGBColor[0.560181, 0.691569, 0.194885], 
+                    AbsoluteThickness[1.6]], 
+                    
+                    Line[{{2.302585092994046, 0.3768538751148133}, {
+                    4.0943445622221, 0.3448057522694483}, {5.703782474656201, 
+                    0.34236329823787504`}, {7.313220387090301, 
+                    0.34011175142085415`}, {8.750524669117937, 
+                    0.34135208014241714`}}]}, "LinearRegression"], 
+                    Tooltip[{
+                    Hue[0.37820393249936934`, 0.6, 0.6], 
+                    Directive[
+                    PointSize[0.011000000000000001`], 
+                    RGBColor[0.922526, 0.385626, 0.209179], 
+                    AbsoluteThickness[1.6]], 
+                    Line[{{2.302585092994046, 0.37685422088143206`}, {
+                    4.0943445622221, 0.34532347746034975`}, {
+                    5.703782474656201, 0.34236330627714634`}, {
+                    7.313220387090301, 0.34116452756503346`}, {
+                    8.750524669117937, 0.34215584407696115`}}]}, 
+                    "LinearRegression"], 
+                    Tooltip[{
+                    Hue[0.6142719099991583, 0.6, 0.6], 
+                    Directive[
+                    PointSize[0.011000000000000001`], 
+                    RGBColor[0.528488, 0.470624, 0.701351], 
+                    AbsoluteThickness[1.6]], 
+                    
+                    Line[{{2.302585092994046, 0.4022882277700408}, {
+                    4.0943445622221, 0.38142085053738173`}, {
+                    5.703782474656201, 0.3846465189354595}, {
+                    7.313220387090301, 0.382083449148751}, {8.750524669117937,
+                     0.37972084594296096`}}]}, "LinearRegression"], 
+                    Tooltip[{
+                    Hue[0.8503398874989481, 0.6, 0.6], 
+                    Directive[
+                    PointSize[0.011000000000000001`], 
+                    RGBColor[0.772079, 0.431554, 0.102387], 
+                    AbsoluteThickness[1.6]], 
+                    
+                    Line[{{2.302585092994046, 0.37143274200266574`}, {
+                    4.0943445622221, 0.3383392410874262}, {5.703782474656201, 
+                    0.34235584248212214`}, {7.313220387090301, 
+                    0.3372275945560709}, {8.750524669117937, 
+                    0.3395382573884021}}]}, "LinearRegression"], 
+                    Tooltip[{
+                    Hue[0.08640786499873876, 0.6, 0.6], 
+                    Directive[
+                    PointSize[0.011000000000000001`], 
+                    RGBColor[0.363898, 0.618501, 0.782349], 
+                    AbsoluteThickness[1.6]], 
+                    
+                    Line[{{2.302585092994046, 0.37685418574017476`}, {
+                    4.0943445622221, 0.3378910948335655}, {5.703782474656201, 
+                    0.33616907428820925`}, {7.313220387090301, 
+                    0.3402760938862979}, {8.750524669117937, 
+                    0.3431556788643941}}]}, "LinearRegression"], 
+                    Tooltip[{
+                    Hue[0.3224758424985268, 0.6, 0.6], 
+                    Directive[
+                    PointSize[0.011000000000000001`], 
+                    RGBColor[1, 0.75, 0], 
+                    AbsoluteThickness[1.6]], 
+                    
+                    Line[{{2.302585092994046, 0.36839106094383356`}, {
+                    4.0943445622221, 0.3382493671305352}, {5.703782474656201, 
+                    0.33618352148245806`}, {7.313220387090301, 
+                    0.33627562485558965`}, {8.750524669117937, 
+                    0.3402347634039586}}]}, "LinearRegression"], 
+                    Tooltip[{
+                    Hue[0.5585438199983166, 0.6, 0.6], 
+                    Directive[
+                    PointSize[0.011000000000000001`], 
+                    RGBColor[0.647624, 0.37816, 0.614037], 
+                    AbsoluteThickness[1.6]], 
+                    
+                    Line[{{2.302585092994046, 0.4042609540442709}, {
+                    4.0943445622221, 0.38118093938570013`}, {
+                    5.703782474656201, 0.37998044108890927`}, {
+                    7.313220387090301, 0.3734974974891061}, {
+                    8.750524669117937, 0.3590684694341696}}]}, 
+                    "LinearRegression"], 
+                    Tooltip[{
+                    Hue[0.7946117974981064, 0.6, 0.6], 
+                    Directive[
+                    PointSize[0.011000000000000001`], 
+                    RGBColor[0.571589, 0.586483, 0.], 
+                    AbsoluteThickness[1.6]], 
+                    
+                    Line[{{2.302585092994046, 0.3672226712811406}, {
+                    4.0943445622221, 0.34503331109740026`}, {
+                    5.703782474656201, 0.34039836804466495`}, {
+                    7.313220387090301, 0.33623739761633603`}, {
+                    8.750524669117937, 0.34662616384357775`}}]}, 
+                    "LinearRegression"], 
+                    Tooltip[{
+                    Hue[0.030679774997896203`, 0.6, 0.6], 
+                    Directive[
+                    PointSize[0.011000000000000001`], 
+                    RGBColor[0.915, 0.3325, 0.2125], 
+                    AbsoluteThickness[1.6]], 
+                    
+                    Line[{{4.0943445622221, 0.3820442282092595}, {
+                    5.703782474656201, 0.36885325598505997`}, {
+                    7.313220387090301, 0.3465282547879518}, {
+                    8.750524669117937, 0.3455834361916677}}]}, 
+                    "LinearRegression"], 
+                    Tooltip[{
+                    Hue[0.266747752497686, 0.6, 0.6], 
+                    Directive[
+                    PointSize[0.011000000000000001`], 
+                    RGBColor[0.40082222609352647`, 0.5220066643438841, 0.85], 
+                    AbsoluteThickness[1.6]], 
+                    
+                    Line[{{4.0943445622221, 0.3650285300422776}, {
+                    5.703782474656201, 0.3435513856118185}, {
+                    7.313220387090301, 0.3397374087353476}, {
+                    8.750524669117937, 0.34318871704309833`}}]}, 
+                    "LinearRegression"], 
+                    Tooltip[{
+                    Hue[0.5028157299974758, 0.6, 0.6], 
+                    Directive[
+                    PointSize[0.011000000000000001`], 
+                    RGBColor[
+                    0.9728288904374106, 0.621644452187053, 
+                    0.07336199581899142], 
+                    AbsoluteThickness[1.6]], 
+                    
+                    Line[{{4.0943445622221, 0.3444484170551871}, {
+                    5.703782474656201, 0.3390893893054533}, {
+                    7.313220387090301, 0.3425104761748987}, {
+                    8.750524669117937, 0.3426922156048548}}]}, 
+                    "LinearRegression"]}}, {}, {}, {}, {}}}}, {
+                    DisplayFunction -> Identity, 
+                    GridLines -> {
+                    Charting`ScaledTickValues[{Log, Exp}][#, #2, {6, 6}]& , 
+                    Charting`ScaledTickValues[{Log, Exp}][#, #2, {6, 6}]& }, 
+                    DisplayFunction -> Identity, DisplayFunction -> Identity, 
+                    DisplayFunction -> Identity, PlotRangePadding -> {{
+                    Scaled[0.02], 0}, {
+                    Scaled[0.02], 
+                    Scaled[0.05]}}, 
+                    AxesOrigin -> {2.0622459966859275`, 0.3312269217252693}, 
+                    PlotRange -> {{2.1664392465304876`, 
+                    Log[7893]}, {0.3323861920795391, 0.4042609540442709}}, 
+                    PlotRangeClipping -> True, 
+                    ImagePadding -> {{30, 10}, {37, 0}}, DisplayFunction -> 
+                    Identity, AspectRatio -> GoldenRatio^(-1), 
+                    Axes -> {True, True}, AxesLabel -> {None, None}, 
+                    AxesOrigin -> {2.0622459966859275`, 0.3312269217252693}, 
+                    DisplayFunction :> Identity, 
+                    Frame -> {{True, True}, {True, True}}, 
+                    FrameLabel -> {{None, None}, {
+                    "training examples used", None}}, FrameTicks -> {{
+                    Charting`ScaledTicks[{Log, Exp}], {}}, {
+                    Charting`ScaledTicks[{Log, Exp}], {}}}, 
+                    GridLines -> {
+                    Charting`ScaledTickValues[{Log, Exp}][#, #2, {6, 6}]& , 
+                    Charting`ScaledTickValues[{Log, Exp}][#, #2, {6, 6}]& }, 
+                    GridLinesStyle -> Directive[
+                    GrayLevel[0.5, 0.4]], ImageMargins -> 0, 
+                    ImagePadding -> {{30, 10}, {37, 0}}, ImageSize -> 330, 
+                    LabelStyle -> 10, 
+                    Method -> {
+                    "CoordinatesToolOptions" -> {"DisplayFunction" -> ({
+                    (Exp[#]& )[
+                    Part[#, 1]], 
+                    (Exp[#]& )[
+                    Part[#, 2]]}& ), "CopiedValueFunction" -> ({
+                    (Exp[#]& )[
+                    Part[#, 1]], 
+                    (Exp[#]& )[
+                    Part[#, 2]]}& )}}, PlotRange -> {{2.1664392465304876`, 
+                    Log[7893]}, {0.3323861920795391, 0.4042609540442709}}, 
+                    PlotRangeClipping -> True, PlotRangePadding -> {{
+                    Scaled[0.02], 0}, {
+                    Scaled[0.02], 
+                    Scaled[0.05]}}, Ticks -> {
+                    Charting`ScaledTicks[{Log, Exp}], 
+                    Charting`ScaledTicks[{Log, Exp}]}}]}]], Appearance -> 
+                    "Frameless"]}}, Alignment -> {Center, Baseline}, 
+                    ItemSize -> {{3, 20, 3}, {2}}]], StandardForm],
+                 ImageSizeCache->{330., {118., 122.}}],
+                DynamicModuleValues:>{}],
+               Alignment->Center,
+               StripOnInput->False], "\[SpanFromLeft]"}
+            },
+            AutoDelete->False,
+            ColumnsEqual->False,
+            
+            GridBoxAlignment->{
+             "Columns" -> {Right, {Left}}, "ColumnsIndexed" -> {}, 
+              "Rows" -> {{Baseline}}, "RowsIndexed" -> {}},
+            GridBoxDividers->{"Columns" -> {False, {
+                 Opacity[0.15]}, False}},
+            
+            GridBoxItemSize->{
+             "Columns" -> {Automatic, {Automatic}}, "ColumnsIndexed" -> {}, 
+              "Rows" -> {{1.}}, "RowsIndexed" -> {}},
+            GridBoxSpacings->{"Columns" -> {
+                Offset[0.27999999999999997`], 
+                Offset[1.1199999999999999`], {
+                 Offset[1.75]}, 
+                Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+                Offset[0.2], {
+                 Offset[0.8]}, 
+                Offset[0.2]}, "RowsIndexed" -> {}}],
+           "Grid"],
+          FrameMargins->{{10, 10}, {10, 5}},
+          FrameStyle->None,
+          StripOnInput->False],
+         Deploy,
+         DefaultBaseStyle->"Deploy"],
+        Alignment->Center,
+        BaseStyle->{
+         FontWeight -> "Light", FontSize -> 12, FontFamily -> "Segoe UI", 
+          NumberMarks -> False, Deployed -> False},
+        StripOnInput->False]}
+     },
+     DefaultBaseStyle->"Column",
+     GridBoxAlignment->{
+      "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+       "RowsIndexed" -> {}},
+     GridBoxDividers->{
+      "Columns" -> {{False}}, "ColumnsIndexed" -> {}, "Rows" -> {{False}}, 
+       "RowsIndexed" -> {}},
+     GridBoxItemSize->{
+      "Columns" -> {{Automatic}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+       "RowsIndexed" -> {}},
+     GridBoxSpacings->{"Columns" -> {
+         Offset[0.27999999999999997`], {
+          Offset[0.5599999999999999]}, 
+         Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+         Offset[0.2], 
+         Offset[1.2], {
+          Offset[0.4]}, 
+         Offset[0.2]}, "RowsIndexed" -> {}}],
+    Background->RGBColor[0.9802, 0.9802, 0.9802],
+    FrameMargins->{{0, 0}, {0, 0}},
+    FrameStyle->GrayLevel[0.85],
+    RoundingRadius->5,
+    StripOnInput->False],
+   StripOnInput->False,
+   LineBreakWithin->False],
+  Deploy,
+  DefaultBaseStyle->"Deploy"]], "Output",
+ CellChangeTimes->{3.7515040897360864`*^9, 3.7515053710290427`*^9},
+ CellLabel->
+  "Out[190]=",ExpressionUUID->"bb92068b-ecec-4bdc-b33c-4843595d6440"]
+}, Open  ]],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Voltagetobeplotted", " ", "=", " ", 
+   RowBox[{"{", "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Currenttobeplotted", " ", "=", " ", 
+   RowBox[{"{", "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Temparaturetobeplotted", " ", "=", " ", 
+   RowBox[{"{", "}"}]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.7515044656561747`*^9, 3.751504666003559*^9}, {
+  3.7515048061994257`*^9, 3.751504815668733*^9}, {3.7515052379429855`*^9, 
+  3.7515052393490543`*^9}},
+ CellLabel->
+  "In[199]:=",ExpressionUUID->"aadb4695-ae5f-4330-8f85-2423e470f363"],
+
+Cell[BoxData[
+ RowBox[{"\n", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"c1", " ", "=", " ", "0"}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"While", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{"c1", " ", "+=", " ", "1"}], ")"}], " ", "<", "77"}], ",", 
+      "\n", "  ", 
+      RowBox[{
+       RowBox[{"{", "\n", "    ", "\n", "    ", 
+        RowBox[{
+         RowBox[{"Voltagetobeplotted", " ", "=", " ", 
+          RowBox[{"Append", "[", 
+           RowBox[{"Voltagetobeplotted", ",", " ", 
+            RowBox[{"Voltage", "[", 
+             RowBox[{"[", "c1", "]"}], "]"}]}], "]"}]}], ";", "\n", "    ", 
+         RowBox[{"Currenttobeplotted", " ", "=", " ", 
+          RowBox[{"Append", "[", 
+           RowBox[{"Currenttobeplotted", ",", " ", 
+            RowBox[{"CurrentDensity", "[", 
+             RowBox[{"[", "c1", "]"}], "]"}]}], "]"}]}], ";", 
+         "\[IndentingNewLine]", 
+         RowBox[{"Temparaturetobeplotted", " ", "=", " ", 
+          RowBox[{"Append", "[", 
+           RowBox[{"Temparaturetobeplotted", ",", " ", 
+            RowBox[{"Temparature", "[", 
+             RowBox[{"[", "c1", "]"}], "]"}]}], "]"}]}], ";"}], "\n", "    ", 
+        "}"}], ";"}]}], "\n", "  ", "]"}], ";"}]}]}]], "Input",
+ CellChangeTimes->{{3.7515046742076745`*^9, 3.751504780276086*^9}, {
+  3.7515048230828424`*^9, 3.751504873758259*^9}},
+ CellLabel->
+  "In[202]:=",ExpressionUUID->"33541b87-817f-4095-abf6-c50a720ff53a"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"toplotiv", " ", "=", " ", 
+   RowBox[{"Transpose", "[", 
+    RowBox[{"{", 
+     RowBox[{"Voltagetobeplotted", ",", "Currenttobeplotted"}], "}"}], 
+    "]"}]}], ";"}], "\n", 
+ RowBox[{"OutputValueplot", " ", "=", 
+  RowBox[{"ListLinePlot", "[", 
+   RowBox[{"toplotiv", ",", 
+    RowBox[{"PlotRange", "\[Rule]", "Automatic"}], ",", 
+    RowBox[{"PlotRange", "\[Rule]", 
+     RowBox[{"{", 
+      RowBox[{"0", ",", "1"}], "}"}]}]}], "]"}]}]}], "Input",
+ CellChangeTimes->{{3.7515048827125244`*^9, 3.7515048958926425`*^9}, {
+  3.7515049435123696`*^9, 3.7515049674355936`*^9}, {3.7515050024604645`*^9, 
+  3.751505008875312*^9}},
+ CellLabel->
+  "In[204]:=",ExpressionUUID->"f640945e-fc4b-472a-963d-64d3bcf63b8c"],
+
+Cell[BoxData[
+ GraphicsBox[{{}, {{}, {}, 
+    {RGBColor[0.368417, 0.506779, 0.709798], PointSize[
+      NCache[
+       Rational[1, 60], 0.016666666666666666`]], AbsoluteThickness[1.6], 
+     LineBox[CompressedData["
+1:eJxd0mdMU1EUB/C2QOk3JamCyqYMRTp4LR0Qzy1qNFFjgAQsIFD2jCIOjAMh
+KIkIjqgUbBAZCgiJBgOCUDQIQcUFDeCKVspoqYCiCIoLDp/8Jy83N++c37nv
+5TpF7wmMY9BoNPLvWVj/T0nxQmqgKEfeo+Uke+G+GdL2Hwni5N30ohbTAdSB
+WPex3eNL7x+BwfmustDWk4vKC6Aehyduf53Mxfo+SOpWr7qoquXGL6Yfsjbo
+7I+EGLnY/wrYU1ol3Xod72nPQt7Cvbv1Ga4DSTz0PkBttqpvuKiGh/U6CNhv
+bSZXGHjCRX8IAmIhT7RmLR/79VC+sWPswbtEfsLivBFoP21q0JdV89Ebg6Dc
+C5nq2DE+egYwXLF6POrhIUBvHDTt/tD5KUGAngnODu7bRzXcEKA3ARHBoXTB
+4VEBelPQ84Jd0Aru3lg/Baw2mxYtM8Eb/c/AFPP4mc+ue+P3f4GJ9yklVZdH
+vPH/TEPxc86NsEg3Cr2vcK7EaFnsEU+h92+ffCI9/EsVhd43cPLUXqlsHabQ
+m4HVj2bke/Nc8fjUdzh+ku2sCYwTojcLnoq0X2fsq4TozQJj7w7VG6NeiN4c
+hN2yaKlu4ojQ+wGGEP366dxYEXo/IaPOS9McWClCbx4ON7M3/HTUi9CbhxS3
+O1mNky4+6P0C+5WWCqMmxge936B2+Fh+qbDCB70/kBpkkjRFDPksXTsyH6Ca
+28FzEWM9jTw7ZNe1ixYjRp9Gllul5/S/LBdjP53U18CKroqPYpxHJ/kxIwlu
+B50lyDFIkDI1fmZrtAQ9BlFsOvpHaFsuQY9BntzezdFN6iTomZHE6YnuuQ4n
+KXpmJEddOnRMpZSiZ06KNselpaZdk6JnTozB7cqH/jopeuZk+O11Ta6Nkww9
+C+KSUZBbNxElQ8+CzEqCG2WdZTL0mESr3angqj/I0GOSgnzugVMZjr7oMYk8
+gsn23xbli54lOQSb/aNcynzRsyRbikLt7n9/74sei9hKS9nZNQ5+6LFIL2Gd
+p4dH+qHHIiZGbxssu+o3WGxLXAdYRCuv6M9LavD7C1tptpk=
+      "]]}}, {}, {}, {}, {}},
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->{True, True},
+  AxesLabel->{None, None},
+  AxesOrigin->{0, 0},
+  DisplayFunction->Identity,
+  Frame->{{False, False}, {False, False}},
+  FrameLabel->{{None, None}, {None, None}},
+  FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
+  GridLines->{None, None},
+  GridLinesStyle->Directive[
+    GrayLevel[0.5, 0.4]],
+  ImagePadding->All,
+  Method->{"CoordinatesToolOptions" -> {"DisplayFunction" -> ({
+        (Identity[#]& )[
+         Part[#, 1]], 
+        (Identity[#]& )[
+         Part[#, 2]]}& ), "CopiedValueFunction" -> ({
+        (Identity[#]& )[
+         Part[#, 1]], 
+        (Identity[#]& )[
+         Part[#, 2]]}& )}},
+  PlotRange->{{0, 3.75}, {0, 2.6939879466015677`*^-16}},
+  PlotRangeClipping->True,
+  PlotRangePadding->{{
+     Scaled[0.02], 
+     Scaled[0.02]}, {
+     Scaled[0.02], 
+     Scaled[0.05]}},
+  Ticks->{Automatic, Automatic}]], "Output",
+ CellChangeTimes->{
+  3.751504896630906*^9, {3.751504959614439*^9, 3.7515049679428916`*^9}, 
+   3.7515050094690256`*^9, 3.7515054198676214`*^9},
+ CellLabel->
+  "Out[205]=",ExpressionUUID->"6ce29dba-82a3-4256-851b-aaf305ed5e15"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"DesiredConditions", " ", "=", " ", 
+    RowBox[{"{", 
+     RowBox[{"140", ",", "0.1"}], "}"}]}], ";"}], "\t"}], "\n", 
+ RowBox[{"PredictedVonbyRFMethod", " ", "=", " ", 
+  RowBox[{
+  "RandomForestPrediction", "[", "DesiredConditions", "]"}]}]}], "Input",
+ CellChangeTimes->{{3.7515052649605646`*^9, 3.7515053433983955`*^9}, {
+  3.7515055250768785`*^9, 3.7515055255300875`*^9}, {3.7515055570235553`*^9, 
+  3.7515056006205244`*^9}},
+ CellLabel->
+  "In[215]:=",ExpressionUUID->"b540042c-f8e8-49ab-bad1-3cb2db644f9a"],
+
+Cell[BoxData["3.546176946327407`"], "Output",
+ CellChangeTimes->{
+  3.7515054198832483`*^9, 3.7515055268028636`*^9, {3.7515055645324264`*^9, 
+   3.751505601218589*^9}},
+ CellLabel->
+  "Out[216]=",ExpressionUUID->"651de045-0e4c-4562-bd0e-820e8cc579ad"]
+}, Open  ]]
+},
+WindowSize->{1536, 781},
+WindowMargins->{{-8, Automatic}, {Automatic, -8}},
+FrontEndVersion->"11.3 for Microsoft Windows (64-bit) (March 6, 2018)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 464, 11, 28, "Input",ExpressionUUID->"8f652fc9-cf81-4387-b822-47531c3d1e44"],
+Cell[1025, 33, 340, 8, 28, "Input",ExpressionUUID->"09cceb15-805b-4e6c-af98-7eb4ce7687b2"],
+Cell[1368, 43, 317, 7, 28, "Input",ExpressionUUID->"0d05d78c-5920-4a37-ad4c-f8716719373e"],
+Cell[1688, 52, 297, 6, 28, "Input",ExpressionUUID->"227fe399-be0b-48db-b916-66554375735b"],
+Cell[1988, 60, 514, 15, 86, "Input",ExpressionUUID->"bf7d680f-9506-4661-b6d2-bdb7deb62452"],
+Cell[2505, 77, 2032, 49, 219, "Input",ExpressionUUID->"25bb2922-c72f-4e76-a9cb-8d9c9aed1edc"],
+Cell[4540, 128, 372, 10, 28, "Input",ExpressionUUID->"76ced971-0fd4-465a-a6f3-6c8731a7a6bd"],
+Cell[4915, 140, 768, 20, 48, "Input",ExpressionUUID->"9e57603c-6e82-4f3e-838c-4fc1f2f22d40"],
+Cell[CellGroupData[{
+Cell[5708, 164, 1629, 43, 181, "Input",ExpressionUUID->"c8d36840-202d-4d7a-812d-41a509e8add8"],
+Cell[7340, 209, 80914, 1567, 542, "Output",ExpressionUUID->"bb92068b-ecec-4bdc-b33c-4843595d6440"]
+}, Open  ]],
+Cell[88269, 1779, 602, 14, 67, "Input",ExpressionUUID->"aadb4695-ae5f-4330-8f85-2423e470f363"],
+Cell[88874, 1795, 1442, 35, 200, "Input",ExpressionUUID->"33541b87-817f-4095-abf6-c50a720ff53a"],
+Cell[CellGroupData[{
+Cell[90341, 1834, 741, 18, 48, "Input",ExpressionUUID->"f640945e-fc4b-472a-963d-64d3bcf63b8c"],
+Cell[91085, 1854, 2503, 58, 222, "Output",ExpressionUUID->"6ce29dba-82a3-4256-851b-aaf305ed5e15"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[93625, 1917, 561, 13, 48, "Input",ExpressionUUID->"b540042c-f8e8-49ab-bad1-3cb2db644f9a"],
+Cell[94189, 1932, 251, 5, 32, "Output",ExpressionUUID->"651de045-0e4c-4562-bd0e-820e8cc579ad"]
+}, Open  ]]
+}
+]
+*)
+
