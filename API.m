@@ -43,7 +43,12 @@ TrainTestRatio = 0.8;
 RandomForestPrediction= Predict[TrainingSet,Method->"RandomForest"];
 
 DesiredConditions = {ToExpression[DesiredTemparature],0.1};	
-PredictedVonbyRFMethod = RandomForestPrediction[DesiredConditions]
+PredictedVonbyRFMethod = RandomForestPrediction[DesiredConditions];
+
+
+OutputValueraw = ExportString[<|"input"-><|"User_Information"-><|"UserID"->UserID,"Testing"->TestingFlag,"OutputFormat"-> "OutputForm"|>,"Parameters"-><|"status"-> "true","keys"-> {"DesiredTemparature"},"values"-> {DesiredTemparature}|>|>,
+  "Von_Predicted"->  <|"unit" -> "volts", "description" -> "Von predicted using Random Forest method in Mathematica prediction model", "abbrevation" -> "V","value" -> PredictedVonbyRFMethod|>|>, "RawJSON","Compact" -> True]
+   
 
     ]
 ServiceReturn[PredictionModel] = _SchemaExpr
